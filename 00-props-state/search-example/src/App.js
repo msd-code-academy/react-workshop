@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import './App.css';
 
 const fakeRes1 = [{title: 'Result 1', body: 'Long Description'}]
@@ -25,22 +25,36 @@ const Search = ({query, results, onChange, onSubmit}) => (
   </div>
 )
 
-const handleChange = (e) => {console.log(e.target.value)}
-const handleSubmit = (e) => {
-  e.preventDefault()
-  console.log('submit')
+class SearchLogic extends PureComponent {
+  state = {
+    query: 'abc'
+  }
+
+  handleChange = (e) => {console.log(e.target.value)}
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    console.log('submit')
+  }
+
+  render() {
+    const {query} = this.state
+    const {handleChange, handleSubmit} = this
+    return this.props.children({query, handleChange, handleSubmit})
+  }
 }
 
-class App extends Component {
+class App extends PureComponent {
   render() {
     return (
       <div className="App">
         <header className="App-header">
           logo, navigation, ...
         </header>
-
-        <Search query={"abc"} results={fakeRes1} onChange={handleChange} onSubmit={handleSubmit}/>
-
+        <SearchLogic>
+          {({query, handleChange, handleSubmit}) =>
+              <Search query={"abc"} results={fakeRes1} onChange={handleChange} onSubmit={handleSubmit}/>}
+        </SearchLogic>
         <footer>
           MIT License
         </footer>
