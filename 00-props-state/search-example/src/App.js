@@ -1,18 +1,30 @@
-import React, {PureComponent} from 'react';
-import {withRouter} from './router';
+import React, {Component, PureComponent} from 'react';
+import {withRouter, RouterContext} from './router';
 import './App.css';
 
-const fakeRes1 = [{title: 'Result 1', body: 'Long Description'}]
-const fakeRes2 = [{title: 'Result 1', body: 'Description D'}, {title: 'Result 2', body: 'Description E'}]
+const fakeRes1 = [{title: 'Result 1', body: 'Long Description', more: 'abc'}]
+const fakeRes2 = [{title: 'Result 1', body: 'Description D', more: 'def'}, {title: 'Result 2', body: 'Description E'}]
 
-const Result = ({result}) => {
-  const {title, body} = result
-  return (
-    <div>
-      <h2>{title}</h2> {body}
-    </div>
-  )
+class Result extends Component {
+  handleClick = (e) => {
+    e.preventDefault()
+    const {more} = this.props
+    const {route, changeRoute} = this.context
+    changeRoute(`${route} ${more}`)
+  }
+  render(){
+    const {title, body, more} = this.props
+    return (
+      <div>
+        <h1>{title}
+        </h1>
+        {body}
+        {more && <div><a onClick={this.handleClick} href='#'>See more</a></div>}
+      </div>
+    )
+  }
 }
+Result.contextType = RouterContext
 
 const Search = ({query, submittedQuery, results, onChange, onSubmit}) => (
   <div>
@@ -22,7 +34,7 @@ const Search = ({query, submittedQuery, results, onChange, onSubmit}) => (
     </form>
     {submittedQuery && (
       <div>
-        Results for {submittedQuery}: {results.map(result => <Result result={result} key={result.title}/>)}
+        Results for {submittedQuery}: {results.map(result => <Result {...result} key={result.title}/>)}
       </div>
     )}
   </div>
