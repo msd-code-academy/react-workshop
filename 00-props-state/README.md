@@ -22,7 +22,19 @@ Excercises (follow live coding / create your own example / help people around wh
 
 Git diffs (to discuss concepts that would take longer to code):
 
-* [04-router](04-router) - use react-router to preserve some state via URL
-* [05-context](05-context) - use React Context API to avoid passing props in intermediate components
-* [06-redux](06-redux) - use Redux instead of Context to enjoy the nice dev tools
-* ??? [07-hooks](07-hooks) - use React Hooks to compare previous solutions with this bleeding edge feature
+`TODO: add links to commits`
+* [04-router]() - use react-router to preserve some state via URL
+* [05-context]() - use React Context API to avoid passing props in intermediate components
+* [06-redux]() - use Redux instead of Context to enjoy the nice dev tools
+* [07-hooks]() - use React Hooks to compare previous solutions with this bleeding edge feature
+
+## Useful tips
+
+* `<input value=...` is called a [Controlled Component](https://reactjs.org/docs/forms.html#controlled-components) (by React),<br>
+  `<input defaultValue=...` is [Uncontrolled](https://reactjs.org/docs/uncontrolled-components.html) (controlled by DOM / browser)
+* `class ... method = () => ...` is [Class Fields](https://github.com/tc39/proposal-class-fields) feature
+* `<A>{(x) => <B prop={x} />}</A>` is [Render Props](https://reactjs.org/docs/render-props.html) (a.k.a "children as a function")
+* `<>` is syntax sugar for [`<React.Fragment>`](https://reactjs.org/docs/fragments.html#short-syntax)
+* for reusable components, see also distinction between smart/dumb (a.k.a logical/presentational) components, e.g. https://youtu.be/Y7es1vcib14
+
+`TODO: update tips during live coding if needed`
