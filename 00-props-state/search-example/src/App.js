@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import {withRouter} from './router';
 import './App.css';
 
 const fakeRes1 = [{title: 'Result 1', body: 'Long Description'}]
@@ -29,9 +30,22 @@ const Search = ({query, submittedQuery, results, onChange, onSubmit}) => (
 
 class SearchLogic extends PureComponent {
   state = {
-    query: 'abc',
+    query: this.props.route || '',
     submittedQuery: '',
     results: []
+  }
+  
+  componentDidMount() {
+    if (this.props.route) {
+      this.handleSubmit()
+    }
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    if(this.props.route !== nextProps.route) {
+      this.setState({query: nextProps.route})
+      this.handleSubmit()
+    }
   }
 
   handleChange = (e) => {
@@ -39,7 +53,7 @@ class SearchLogic extends PureComponent {
   }
 
   handleSubmit = (e) => {
-    e.preventDefault()
+    e && e.preventDefault()
     this.setState((state) => ({submittedQuery: state.query, results: []}))
     // fake API call
     setTimeout(() => {
@@ -55,16 +69,24 @@ class SearchLogic extends PureComponent {
 }
 
 class App extends PureComponent {
+  createHandlerSubmit = (newRoute) => (e) => {
+    const {changeRoute} = this.props // from withRouter
+    changeRoute(newRoute)
+  }
+  
   render() {
+    const {route} = this.props
     return (
       <div className="App">
-        <SearchLogic>
-          {({query, submittedQuery, results, handleChange, handleSubmit}) => (
+        <SearchLogic route={route}>
+          {({query, submittedQuery, results, handleChange}) => (
             <>
               <header className="App-header">
                 logo, navigation, ... {results.length ? `Showing ${results.length} results` : null}
               </header>
-              <Search {...{query, submittedQuery, results}} onChange={handleChange} onSubmit={handleSubmit}/>
+              <Search {...{query, submittedQuery, results}}
+                onChange={handleChange}
+                onSubmit={this.createHandlerSubmit(query)}/>
               <footer>
                 MIT License
                 {submittedQuery &&
@@ -79,4 +101,6 @@ class App extends PureComponent {
   }
 }
 
-export default App;
+const AppWithRouter = withRouter(App)
+
+export default AppWithRouter;

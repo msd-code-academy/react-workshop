@@ -36,5 +36,7 @@ Git diffs (to discuss concepts that would take longer to code):
 * `<A>{(x) => <B prop={x} />}</A>` is [Render Props](https://reactjs.org/docs/render-props.html) (a.k.a "children as a function")
 * `<>` is syntax sugar for [`<React.Fragment>`](https://reactjs.org/docs/fragments.html#short-syntax)
 * for reusable components, see also distinction between smart/dumb (a.k.a logical/presentational) components, e.g. https://youtu.be/Y7es1vcib14
+* `Enhanced = withSomething(Wrapped)` is a [HOC](https://reactjs.org/docs/higher-order-components.html)
+* `componentWillReceiveProps` => see [You Probably Don't Need Derived State](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html)
 
 `TODO: update tips during live coding if needed`
