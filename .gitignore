@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+# ignore lock files to avoid endorsing vulnerable packages (recommend `npm audit` in README)
+package-lock.json
+yarn.lock
