@@ -58,16 +58,22 @@ class App extends PureComponent {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          logo, navigation, ...
-        </header>
         <SearchLogic>
-          {({query, submittedQuery, results, handleChange, handleSubmit}) =>
-              <Search {...{query, submittedQuery, results}} onChange={handleChange} onSubmit={handleSubmit}/>}
+          {({query, submittedQuery, results, handleChange, handleSubmit}) => (
+            <>
+              <header className="App-header">
+                logo, navigation, ... {results.length ? `Showing ${results.length} results` : null}
+              </header>
+              <Search {...{query, submittedQuery, results}} onChange={handleChange} onSubmit={handleSubmit}/>
+              <footer>
+                MIT License
+                {submittedQuery &&
+                  <div>More info about <a href={`https://google.com?q=${submittedQuery}`}>{submittedQuery}</a>.</div>
+                }
+              </footer>
+            </>
+          )}
         </SearchLogic>
-        <footer>
-          MIT License
-        </footer>
       </div>
     );
   }
