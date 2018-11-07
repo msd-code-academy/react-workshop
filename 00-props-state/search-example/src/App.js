@@ -30,7 +30,9 @@ class SearchLogic extends PureComponent {
     query: 'abc'
   }
 
-  handleChange = (e) => {console.log(e.target.value)}
+  handleChange = (e) => {
+    this.setState({query: e.target.value})
+  }
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -53,7 +55,7 @@ class App extends PureComponent {
         </header>
         <SearchLogic>
           {({query, handleChange, handleSubmit}) =>
-              <Search query={"abc"} results={fakeRes1} onChange={handleChange} onSubmit={handleSubmit}/>}
+              <Search query={query} results={fakeRes1} onChange={handleChange} onSubmit={handleSubmit}/>}
         </SearchLogic>
         <footer>
           MIT License
