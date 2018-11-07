@@ -13,17 +13,23 @@ const Result = ({result}) => {
   )
 }
 
-const Search = ({query, results}) => (
+const Search = ({query, results, onChange, onSubmit}) => (
   <div>
-    <div>
-      Search: <input value={query}/>
+    <form onSubmit={onSubmit}>
+      Search: <input value={query} onChange={onChange}/>
       <button>Go</button>
-    </div>
+    </form>
     <div>
       Results for {query}: {results.map(result => <Result result={result} key={result.title}/>)}
     </div>
   </div>
 )
+
+const handleChange = (e) => {console.log(e.target.value)}
+const handleSubmit = (e) => {
+  e.preventDefault()
+  console.log('submit')
+}
 
 class App extends Component {
   render() {
@@ -33,9 +39,7 @@ class App extends Component {
           logo, navigation, ...
         </header>
 
-        <Search query={"abc"} results={fakeRes1}/>
-
-        <Search query={"def"} results={fakeRes2}/>
+        <Search query={"abc"} results={fakeRes1} onChange={handleChange} onSubmit={handleSubmit}/>
 
         <footer>
           MIT License
