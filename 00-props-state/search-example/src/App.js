@@ -13,21 +13,25 @@ const Result = ({result}) => {
   )
 }
 
-const Search = ({query, results, onChange, onSubmit}) => (
+const Search = ({query, submittedQuery, results, onChange, onSubmit}) => (
   <div>
     <form onSubmit={onSubmit}>
       Search: <input value={query} onChange={onChange}/>
       <button>Go</button>
     </form>
-    <div>
-      Results for {query}: {results.map(result => <Result result={result} key={result.title}/>)}
-    </div>
+    {submittedQuery && (
+      <div>
+        Results for {submittedQuery}: {results.map(result => <Result result={result} key={result.title}/>)}
+      </div>
+    )}
   </div>
 )
 
 class SearchLogic extends PureComponent {
   state = {
-    query: 'abc'
+    query: 'abc',
+    submittedQuery: '',
+    results: []
   }
 
   handleChange = (e) => {
@@ -36,13 +40,17 @@ class SearchLogic extends PureComponent {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log('submit')
+    this.setState((state) => ({submittedQuery: state.query, results: []}))
+    // fake API call
+    setTimeout(() => {
+      this.setState({results: Math.random() < 0.5 ? fakeRes1 : fakeRes2})
+    }, 500)
   }
 
   render() {
-    const {query} = this.state
+    const {query, submittedQuery, results} = this.state
     const {handleChange, handleSubmit} = this
-    return this.props.children({query, handleChange, handleSubmit})
+    return this.props.children({query, submittedQuery, results, handleChange, handleSubmit})
   }
 }
 
@@ -54,8 +62,8 @@ class App extends PureComponent {
           logo, navigation, ...
         </header>
         <SearchLogic>
-          {({query, handleChange, handleSubmit}) =>
-              <Search query={query} results={fakeRes1} onChange={handleChange} onSubmit={handleSubmit}/>}
+          {({query, submittedQuery, results, handleChange, handleSubmit}) =>
+              <Search {...{query, submittedQuery, results}} onChange={handleChange} onSubmit={handleSubmit}/>}
         </SearchLogic>
         <footer>
           MIT License
