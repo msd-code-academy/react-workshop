@@ -15,7 +15,7 @@ create-react-app live_coding
 
 Excercises (follow live coding / create your own example / help people around when finished):
 
-* [00-init](00-init) - hardcoded content without any props or state, all at top level
+* [00-init](search-example) - hardcoded content without any props or state, all at top level
 * [01-props](01-props) - create components, identify what should be props
 * [02-state](02-state) - create wrapper components for state
 * [03-shared-state](03-intermediate-components) - move the state higher in the hierarchy when needed
