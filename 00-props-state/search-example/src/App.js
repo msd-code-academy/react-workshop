@@ -19,7 +19,7 @@ class Result extends Component {
         <h1>{title}
         </h1>
         {body}
-        {more && <div><a onClick={this.handleClick} href='#'>See more</a></div>}
+        {more && <div><button onClick={this.handleClick}>See more</button></div>}
       </div>
     )
   }
