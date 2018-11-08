@@ -30,10 +30,10 @@ Git diffs (to discuss concepts that would take longer to code):
   - use a simplified version of [react-router](https://reacttraining.com/react-router/web/guides/quick-start) to preserve some state via URL
 * [05-context](https://github.com/msd-code-academy/react-workshop/pull/2/commits/7b01848b9f7635ae8bc9d9f75f8a35d19283c76f)
   - use the React [Context](https://reactjs.org/docs/context.html) to avoid passing props in intermediate components
-* [06-hooks](76d381db8f44ec2a89ed96b22035552e70ef4bf5)
+* [06-hooks](https://github.com/msd-code-academy/react-workshop/pull/2/commits/76d381db8f44ec2a89ed96b22035552e70ef4bf5)
   - a teaser of [React Hooks](https://reactjs.org/docs/hooks-overview.html) (more in a separate workshop)
-* TODO [07-redux]()
-  - convert to Redux to simplify debugging with dev tools or if we cannot use alpha features in our project
+* [07-redux](https://github.com/msd-code-academy/react-workshop/pull/2/commits/c977249efee84507570d30d9e8dc1c7b4c57b39d)
+  - convert to [Redux](https://redux.js.org/basics/exampletodolist) to simplify debugging with dev tools or if we cannot use alpha features in our project
 
 ## Useful tips
 

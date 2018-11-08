@@ -1,15 +1,13 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useContext} from 'react';
+import {connect} from 'react-redux';
+import {setRouteAndSubmit, setQuery} from './actions';
 import './App.css';
 
-const fakeRes1 = [{title: 'Result 1', body: 'Long Description', more: 'abc'}]
-const fakeRes2 = [{title: 'Result 1', body: 'Description D', more: 'def'}, {title: 'Result 2', body: 'Description E'}]
+const mapStateToProps = ({route, query, results}) => ({route, query, results})
+const mapDispatchToProps = {setRoute: setRouteAndSubmit, setQuery}
 
-export const RouterContext = React.createContext()
-const getHash = () => window.decodeURI(window.location.hash.substr(1))
 
-const Result = ({title, body, more}) => {
-  const {route, setRoute} = useContext(RouterContext)
-
+let Result = ({title, body, more, route, setRoute}) => {
   const handleClick = (e) => {
     e.preventDefault()
     setRoute(`${route} ${more}`)
@@ -24,6 +22,8 @@ const Result = ({title, body, more}) => {
     </div>
   )
 }
+Result = connect(mapStateToProps, mapDispatchToProps)(Result)
+
 
 const Search = ({query, submittedQuery, results, onChange, onSubmit}) => (
   <div>
@@ -38,23 +38,9 @@ const Search = ({query, submittedQuery, results, onChange, onSubmit}) => (
     )}
   </div>
 )
-const App = () => {
-  const [route, setRoute] = useState(getHash())
-  const [query, setQuery] = useState('')
-  const [results, setResults] = useState([])
 
-  useEffect(() => {
-    setQuery(route)
-    window.location.hash = route
-    const timeout = setTimeout(() => setResults(Math.random() < 0.5 ? fakeRes1 : fakeRes2), 500)
-    return () => clearTimeout(timeout)
-  }, [route])
 
-  useEffect(() => {
-    window.onhashchange = () => setRoute(getHash())
-    return () => window.onhashchange = undefined
-  }, [])
-
+const App = ({route, setRoute, query, setQuery, results}) => {
   const handleChange = (e) => {
     setQuery(e.target.value)
   }
@@ -65,23 +51,21 @@ const App = () => {
 
   return (
     <div className="App">
-      <RouterContext.Provider value={{route, setRoute}}>
-        <header className="App-header">
-          logo, navigation, ... {results.length ? `Showing ${results.length} results` : null}
-        </header>
-        <Search {...{query, results}}
-          submittedQuery={route}
-          onChange={handleChange}
-          onSubmit={handleSubmit}/>
-        <footer>
-          MIT License
-          {route &&
-           <div>More info about <a href={`https://google.com?q=${route}`}>{route}</a>.</div>
-          }
-        </footer>
-      </RouterContext.Provider>
+      <header className="App-header">
+        logo, navigation, ... {results.length ? `Showing ${results.length} results` : null}
+      </header>
+      <Search {...{query, results}}
+        submittedQuery={route}
+        onChange={handleChange}
+        onSubmit={handleSubmit}/>
+      <footer>
+        MIT License
+        {route &&
+         <div>More info about <a href={`https://google.com?q=${route}`}>{route}</a>.</div>
+        }
+      </footer>
     </div>
   );
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
