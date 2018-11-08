@@ -15,14 +15,35 @@ create-react-app live_coding
 
 Excercises (follow live coding / create your own example / help people around when finished):
 
-* [00-init](00-init) - hardcoded content without any props or state, all at top level
-* [01-props](01-props) - create components, identify what should be props
-* [02-state](02-state) - create wrapper components for state
-* [03-shared-state](03-intermediate-components) - move the state higher in the hierarchy when needed
+* [00-init](https://github.com/msd-code-academy/react-workshop/pull/2/commits/d81f4537be988531828311029937428383a94d3b)
+  - hardcoded content without any props or state, all at top level
+* [01-props](https://github.com/msd-code-academy/react-workshop/pull/2/commits/22d64a3032b6b50b636bbbca3ef38fa090d17f66)
+  - create components, identify what should be props
+* [02-state](https://github.com/msd-code-academy/react-workshop/pull/2/commits/a895efd0b4e17445a7d2e0c5fae404d327776ce1)
+  - create wrapper components for state
+* [03-shared-state](https://github.com/msd-code-academy/react-workshop/pull/2/commits/1a1ab7735d40ac0d788e1b92a44d60e7342ca2e4)
+  - move the state higher in the hierarchy when needed
 
 Git diffs (to discuss concepts that would take longer to code):
 
-* [04-router](04-router) - use react-router to preserve some state via URL
-* [05-context](05-context) - use React Context API to avoid passing props in intermediate components
-* [06-redux](06-redux) - use Redux instead of Context to enjoy the nice dev tools
-* ??? [07-hooks](07-hooks) - use React Hooks to compare previous solutions with this bleeding edge feature
+* [04-router](https://github.com/msd-code-academy/react-workshop/pull/2/commits/e36985d36276101782534b8a27a30665e7a324bf)
+  - use react-router to preserve some state via URL
+* [05-context](https://github.com/msd-code-academy/react-workshop/pull/2/commits/7b01848b9f7635ae8bc9d9f75f8a35d19283c76f)
+  - use React Context API to avoid passing props in intermediate components
+* TODO [06-redux]()
+  - use Redux instead of Context to enjoy the nice dev tools
+* TODO [07-hooks]()
+  - use React Hooks to compare previous solutions with this bleeding edge feature
+
+## Useful tips
+
+* `<input value=...` is called a [Controlled Component](https://reactjs.org/docs/forms.html#controlled-components) (by React),<br>
+  `<input defaultValue=...` is [Uncontrolled](https://reactjs.org/docs/uncontrolled-components.html) (controlled by DOM / browser)
+* `class ... method = () => ...` is [Class Fields](https://github.com/tc39/proposal-class-fields) feature
+* `<A>{(x) => <B prop={x} />}</A>` is [Render Props](https://reactjs.org/docs/render-props.html) (a.k.a "children as a function")
+* `<>` is syntax sugar for [`<React.Fragment>`](https://reactjs.org/docs/fragments.html#short-syntax)
+* for reusable components, see also distinction between smart/dumb (a.k.a logical/presentational) components, e.g. https://youtu.be/Y7es1vcib14
+* `Enhanced = withSomething(Wrapped)` is a [HOC](https://reactjs.org/docs/higher-order-components.html)
+* `componentWillReceiveProps` => see [You Probably Don't Need Derived State](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html)
+
+`TODO: update tips during live coding if needed`
