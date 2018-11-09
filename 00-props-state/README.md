@@ -15,24 +15,24 @@ create-react-app live_coding
 
 Excercises (follow live coding / create your own example / help people around when finished):
 
-* [00-init](https://github.com/msd-code-academy/react-workshop/pull/2/commits/d81f4537be988531828311029937428383a94d3b)
+* [00-init](https://github.com/msd-code-academy/react-workshop/commit/d81f4537be988531828311029937428383a94d3b)
   - hardcoded content without any props or state, all at top level
-* [01-props](https://github.com/msd-code-academy/react-workshop/pull/2/commits/22d64a3032b6b50b636bbbca3ef38fa090d17f66)
+* [01-props](https://github.com/msd-code-academy/react-workshop/commit/22d64a3032b6b50b636bbbca3ef38fa090d17f66)
   - create components, identify what should be props
-* [02-state](https://github.com/msd-code-academy/react-workshop/pull/2/commits/a895efd0b4e17445a7d2e0c5fae404d327776ce1)
+* [02-state](https://github.com/msd-code-academy/react-workshop/commit/a895efd0b4e17445a7d2e0c5fae404d327776ce1)
   - create wrapper components for state
-* [03-shared-state](https://github.com/msd-code-academy/react-workshop/pull/2/commits/1a1ab7735d40ac0d788e1b92a44d60e7342ca2e4)
+* [03-shared-state](https://github.com/msd-code-academy/react-workshop/commit/1a1ab7735d40ac0d788e1b92a44d60e7342ca2e4)
   - lift the state up in the hierarchy as needed
 
 Git diffs (to discuss concepts that would take longer to code):
 
-* [04-router](https://github.com/msd-code-academy/react-workshop/pull/2/commits/e36985d36276101782534b8a27a30665e7a324bf)
+* [04-router](https://github.com/msd-code-academy/react-workshop/commit/e36985d36276101782534b8a27a30665e7a324bf)
   - use a simplified version of [react-router](https://reacttraining.com/react-router/web/guides/quick-start) to preserve some state via URL
-* [05-context](https://github.com/msd-code-academy/react-workshop/pull/2/commits/7b01848b9f7635ae8bc9d9f75f8a35d19283c76f)
+* [05-context](https://github.com/msd-code-academy/react-workshop/commit/7b01848b9f7635ae8bc9d9f75f8a35d19283c76f)
   - use the React [Context](https://reactjs.org/docs/context.html) to avoid passing props in intermediate components
-* [06-hooks](https://github.com/msd-code-academy/react-workshop/pull/2/commits/76d381db8f44ec2a89ed96b22035552e70ef4bf5)
+* [06-hooks](https://github.com/msd-code-academy/react-workshop/commit/76d381db8f44ec2a89ed96b22035552e70ef4bf5)
   - a teaser of [React Hooks](https://reactjs.org/docs/hooks-overview.html) (more in a separate workshop)
-* [07-redux](https://github.com/msd-code-academy/react-workshop/pull/2/commits/c977249efee84507570d30d9e8dc1c7b4c57b39d)
+* [07-redux](https://github.com/msd-code-academy/react-workshop/commit/c977249efee84507570d30d9e8dc1c7b4c57b39d)
   - convert to [Redux](https://redux.js.org/basics/exampletodolist) to simplify debugging with dev tools or if we cannot use alpha features in our project
 
 ## Useful tips
