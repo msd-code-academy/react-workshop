@@ -8,9 +8,5 @@ Please run `npm audit` before using any of our examples at a later date (the 3rd
 
 ## Content
 * 00 (2018-11-08) [Props / State / Redux - how to decide](00-props-state)
-* 01 (2018-11-22)
-* 02 (2018-12-06)
-* 03 (2019-01-??)
-* 04 (2019-01-??)
-* 05 (2019-02-??)
-* 06 (2019-02-??)
+* 01 (2018-12-06) Hooks
+* ...
