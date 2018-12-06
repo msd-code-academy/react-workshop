@@ -4,7 +4,6 @@ import logo from './logo.svg';
 import {MyStatus} from './useState/class';
 import {MyMouse} from './useEffect/class';
 import {ChuckJokes} from './useCustom/index';
-import {Notes} from './reactHooksNotes/notes';
 import './App.css';
 
 const MainScreen = () => (
@@ -26,7 +25,6 @@ const App = () => (
           <li><Link to="/useState">useState</Link></li>
           <li><Link to="/useEffect">useEffect</Link></li>
           <li><Link to="/useCustom">useCustom</Link></li>
-          <li><Link to="/notes">Notes</Link></li>
         </ul>
       </nav>
       <div className="App-content">
@@ -34,7 +32,6 @@ const App = () => (
         <Route path="/useState" component={MyStatus} />
         <Route path="/useEffect" component={MyMouse} />
         <Route path="/useCustom" component={ChuckJokes} />
-        <Route path="/notes" component={Notes} />
       </div>
     </div>
   </Router>

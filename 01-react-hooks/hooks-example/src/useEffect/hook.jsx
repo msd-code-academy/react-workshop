@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-export const MyMouseHook = () => {
+export const MyMouse = () => {
   const [mousePosition, setMousePosition] = useState({x: 0, y: 0});
   const onMouseMove = event => {
     setMousePosition({

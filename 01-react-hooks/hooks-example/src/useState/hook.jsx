@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-export const MyStatusHook = () => {
+export const MyStatus = () => {
   // whatever we pass to useState function will become the initial value
   const [myStatus, setMyStatus] = useState('cool');
   return (
