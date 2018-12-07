@@ -16,6 +16,6 @@ export class MyStatus extends React.Component {
   );
 }
 
-export const MyStatusHook = () => {
-  // @TODO for superman and batman
-};
+// @TODO useState hook for superman and batman
+// export const MyStatusHook = () => {
+// };

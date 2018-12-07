@@ -29,6 +29,6 @@ export class MyMouse extends React.Component {
   }
 }
 
-export const MyMouseHook = () => {
-  // @TODO useEffect, mount and unmount vs. update, un/bk
-};
+// @TODO useEffect, mount and unmount vs. update, un/bk
+// export const MyMouseHook = () => {
+// };

@@ -13,6 +13,8 @@ const MainScreen = () => (
     <p>
       &quot;making the usage of JS classes unnecessary since 2018&quot;
     </p>
+    <br />
+    <h3>github.com/msd-code-academy/react-workshop</h3>
   </div>
 );
 
