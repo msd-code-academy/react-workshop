@@ -62,6 +62,7 @@ typings/
 
 # IDE files
 .idea
+*.iml
 
 # mac file system
 .DS_Store
