@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
+import Stepper from './Stepper'
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+const steps = [
+  {
+    title: "First Step!",
+    content: "Here is the first step, its really good."
+  },
+  {
+    title: "Second Step!",
+    content: "First is the worst, second the best"
+  },
+  {
+    title: "Third Step!",
+    content: "THIRD STEP YOU MADE IT GJ!"
   }
-}
+];
+
+const App = () => (
+  <Stepper steps={steps}>
+    <Stepper.Buttons />
+    <Stepper.Status />
+    <Stepper.ActiveStep />
+  </Stepper>
+)
 
 export default App;
