@@ -14,7 +14,7 @@ const steps = [
   },
   {
     title: "Third Step!",
-    content: "THIRD STEP YOU MADE IT GJ!"
+    content: "THIRD STEP YOU MADE IT, GOOD JOB!"
   }
 ];
 
