@@ -28,11 +28,11 @@
     color: #35f0f5;
 }
 
-/*.searchbar {*/
-    /*border: none;*/
-    /*padding: 4px;*/
-    /*border-radius: 2px;*/
-    /*min-width: 150px;*/
-    /*margin-right: 10px;*/
-    /*outline: none;*/
-/*}*/
+.searchbar {
+    border: none;
+    padding: 4px;
+    border-radius: 2px;
+    min-width: 150px;
+    margin-right: 10px;
+    outline: none;
+}
