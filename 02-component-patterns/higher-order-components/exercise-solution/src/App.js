@@ -17,6 +17,11 @@ const withScreenDimensions = (WrappedComponent) => {
       window.addEventListener("resize", this.handleResize)
     }
 
+    componentWillUnmount() {
+      window.removeEventListener("resize", this.handleResize)
+    }
+
+
     handleResize = () => {
       this.setState({
         width: window.innerWidth,
