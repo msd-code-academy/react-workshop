@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import Stepper from './Stepper'
-import './App.css';
+import './App.css'
 
 const steps = [
   {
@@ -16,14 +16,16 @@ const steps = [
     title: "Third Step!",
     content: "THIRD STEP YOU MADE IT, GOOD JOB!"
   }
-];
+]
 
 const App = () => (
-  <Stepper steps={steps}>
-    <Stepper.Buttons />
-    <Stepper.Status />
-    <Stepper.ActiveStep />
-  </Stepper>
+  <div className="App">
+    <Stepper steps={steps}>
+      <Stepper.Buttons />
+      <Stepper.Status />
+      <Stepper.ActiveStep />
+    </Stepper>
+  </div>
 )
 
-export default App;
+export default App
