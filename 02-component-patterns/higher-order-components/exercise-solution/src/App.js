@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import hoistStatics from "hoist-non-react-statics";
-import './App.css';
+import React, { Component } from 'react'
+import hoistStatics from 'hoist-non-react-statics'
+
+import './App.css'
 
 const getDisplayName = (Component) => {
   return Component.displayName || Component.name || 'Component'
@@ -14,11 +15,11 @@ const withScreenDimensions = (WrappedComponent) => {
     }
 
     componentDidMount() {
-      window.addEventListener("resize", this.handleResize)
+      window.addEventListener('resize', this.handleResize)
     }
 
     componentWillUnmount() {
-      window.removeEventListener("resize", this.handleResize)
+      window.removeEventListener('resize', this.handleResize)
     }
 
 
@@ -56,11 +57,11 @@ class App extends Component {
   render() {
     const {screenDimensions} = this.props
     return (
-      <div className="App">
+      <div className='App'>
         <h1>{screenDimensions.width}px by {screenDimensions.height}px</h1>
       </div>
-    );
+    )
   }
 }
 
-export default withScreenDimensions(App);
+export default withScreenDimensions(App)
