@@ -1,5 +1,5 @@
 /**
- * HIGHER OREDER COMPONENT EXERCISE
+ * HIGHER ORDER COMPONENT EXERCISE
  *
  * The App component dynamically renders the current window
  * dimensions. Implement a `withScreenDimensions` higher-order

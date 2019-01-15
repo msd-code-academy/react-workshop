@@ -1,3 +1,14 @@
+/**
+ * RENDER PROPS EXERCISE
+ *
+ * The App component will be only for presentational purpose.
+ * The Counter container will hold all the logic and local state.
+ *
+ * Using Render props share:
+ *  1. Event handlers for increasing and decreasing counts
+ *  2. Total count
+ *
+ */
 import React, {Component} from 'react'
 
 import Count from './Count'
