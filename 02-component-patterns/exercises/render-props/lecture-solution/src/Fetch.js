@@ -9,19 +9,19 @@ class Fetch extends Component {
 
   componentDidMount() {
     fetch(this.props.url)
-      .then(res => res.json())
-      .then(data => (
+      .then((res) => res.json())
+      .then((data) =>
         this.setState({
           loading: false,
           data: data
         })
-      ))
-      .catch(error => (
+      )
+      .catch((error) =>
         this.setState({
           loading: false,
           error: error
         })
-      ))
+      )
   }
 
   render() {

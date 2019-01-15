@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 
 class Count extends Component {
-
   state = {
     count: 0
   }
@@ -14,15 +13,13 @@ class Count extends Component {
     this.setState({count: this.state.count - 1})
   }
 
-  render(){
-    return (
-      this.props.children({
-        increase: this.increase,
-        decrease: this.decrease,
-        count: this.state.count
-      }))
+  render() {
+    return this.props.children({
+      increase: this.increase,
+      decrease: this.decrease,
+      count: this.state.count
+    })
   }
-
 }
 
 export default Count

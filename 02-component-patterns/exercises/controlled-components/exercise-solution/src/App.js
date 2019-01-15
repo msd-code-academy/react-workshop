@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 import Stepper from './Stepper'
 import './App.css'
 
 const steps = [
   {
-    title: "First Step!",
-    content: "Here is the first step, its really good."
+    title: 'First Step!',
+    content: 'Here is the first step, its really good.'
   },
   {
-    title: "Second Step!",
-    content: "First is the worst, second the best"
+    title: 'Second Step!',
+    content: 'First is the worst, second the best'
   },
   {
-    title: "Third Step!",
-    content: "THIRD STEP YOU MADE IT, GOOD JOB!"
+    title: 'Third Step!',
+    content: 'THIRD STEP YOU MADE IT, GOOD JOB!'
   }
 ]
 
@@ -23,13 +23,9 @@ class App extends Component {
     stepIndex: 0
   }
 
-  canMoveForward = (index) => (
-    index < steps.length - 1
-  )
+  canMoveForward = (index) => index < steps.length - 1
 
-  canMoveBack = (index) => (
-    index > 0
-  )
+  canMoveBack = (index) => index > 0
 
   onStepChange = (index) => {
     this.setState({
@@ -45,15 +41,14 @@ class App extends Component {
           steps={steps}
           canMoveForward={this.canMoveForward}
           canMoveBack={this.canMoveBack}
-          onChange={this.onStepChange}
-        >
+          onChange={this.onStepChange}>
           <Stepper.ActiveStep />
           <Stepper.Status />
           <Stepper.Controls />
         </Stepper>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

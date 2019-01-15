@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react'
 
 import Fetch from './Fetch'
-import './App.css';
+import './App.css'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Fetch/>
+        <Fetch />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

@@ -5,7 +5,9 @@ const StepperContext = React.createContext()
 const StepperNext = () => (
   <StepperContext.Consumer>
     {({hasNext, stepForward}) => (
-      <button className="step-btn" onClick={stepForward} disabled={!hasNext}>Next</button>
+      <button className="step-btn" onClick={stepForward} disabled={!hasNext}>
+        Next
+      </button>
     )}
   </StepperContext.Consumer>
 )
@@ -13,7 +15,9 @@ const StepperNext = () => (
 const StepperPrevious = () => (
   <StepperContext.Consumer>
     {({hasPrevious, stepBack}) => (
-      <button className="step-btn" onClick={stepBack} disabled={!hasPrevious}>Back</button>
+      <button className="step-btn" onClick={stepBack} disabled={!hasPrevious}>
+        Back
+      </button>
     )}
   </StepperContext.Consumer>
 )
@@ -34,8 +38,7 @@ const StepperStatus = () => (
             <span
               className="status-item"
               style={{color: activeStepIndex === i ? '#000000' : '#aaaaaa'}}
-              onClick={() => goToIndex(i)}
-            >
+              onClick={() => goToIndex(i)}>
               {step.title}
             </span>
             {i !== steps.length - 1 && <span className="status-divider" />}
@@ -61,7 +64,6 @@ const ActiveStep = () => (
 )
 
 class Stepper extends Component {
-
   static Controls = StepperControls
   static Next = StepperNext
   static Previous = StepperPrevious
@@ -74,11 +76,11 @@ class Stepper extends Component {
   }
 
   findActiveStep = (step) => {
-    return step.id === this.state.activeStepId;
+    return step.id === this.state.activeStepId
   }
 
   stepForward = () => {
-    this.setState(state => {
+    this.setState((state) => {
       return {
         activeStepIndex: state.activeStepIndex + 1
       }
@@ -86,20 +88,20 @@ class Stepper extends Component {
   }
 
   stepBack = () => {
-    this.setState(state => {
+    this.setState((state) => {
       return {
         activeStepIndex: state.activeStepIndex - 1
       }
     })
   }
 
-  goToIndex = index => {
-    this.setState({ activeStepIndex: index })
+  goToIndex = (index) => {
+    this.setState({activeStepIndex: index})
   }
 
   getContext() {
-    const { steps } = this.props
-    const { activeStepIndex } = this.state
+    const {steps} = this.props
+    const {activeStepIndex} = this.state
     const hasPrevious = activeStepIndex > 0
     const hasNext = activeStepIndex < steps.length - 1
     return {
@@ -116,9 +118,7 @@ class Stepper extends Component {
   render() {
     return (
       <div className="stepper">
-        <StepperContext.Provider value={this.getContext()}>
-          {this.props.children}
-        </StepperContext.Provider>
+        <StepperContext.Provider value={this.getContext()}>{this.props.children}</StepperContext.Provider>
       </div>
     )
   }

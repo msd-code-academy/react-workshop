@@ -13,7 +13,7 @@
  *
  */
 
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 // Hmmm, maybe this will be useful?
 // import hoistStatics from 'hoist-non-react-statics'
 import './App.css'
@@ -40,9 +40,9 @@ class App extends Component {
   }
 
   render() {
-    const { width, height } = this.state;
+    const {width, height} = this.state
     return (
-      <div className='App'>
+      <div className="App">
         <h1>
           {width}px by {height}px
         </h1>

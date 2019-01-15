@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react'
 
 import RadioGroup from './RadioGroup'
-import './App.css';
+import './App.css'
 
 class App extends Component {
   render() {
@@ -13,8 +13,8 @@ class App extends Component {
           <RadioGroup.Option value="Third" />
         </RadioGroup>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

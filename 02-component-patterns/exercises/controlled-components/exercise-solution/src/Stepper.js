@@ -5,7 +5,9 @@ const StepperContext = React.createContext()
 const StepperNext = () => (
   <StepperContext.Consumer>
     {({hasNext, stepForward}) => (
-      <button className="step-btn" onClick={stepForward} disabled={!hasNext}>Next</button>
+      <button className="step-btn" onClick={stepForward} disabled={!hasNext}>
+        Next
+      </button>
     )}
   </StepperContext.Consumer>
 )
@@ -13,7 +15,9 @@ const StepperNext = () => (
 const StepperPrevious = () => (
   <StepperContext.Consumer>
     {({hasPrevious, stepBack}) => (
-      <button className="step-btn" onClick={stepBack} disabled={!hasPrevious}>Back</button>
+      <button className="step-btn" onClick={stepBack} disabled={!hasPrevious}>
+        Back
+      </button>
     )}
   </StepperContext.Consumer>
 )
@@ -34,8 +38,7 @@ const StepperStatus = () => (
             <span
               className="status-item"
               style={{color: stepIndex === i ? '#000000' : '#aaaaaa'}}
-              onClick={() => goToIndex(i)}
-            >
+              onClick={() => goToIndex(i)}>
               {step.title}
             </span>
             {i !== steps.length - 1 && <span className="status-divider" />}
@@ -61,7 +64,6 @@ const ActiveStep = () => (
 )
 
 class Stepper extends Component {
-
   static Controls = StepperControls
   static Next = StepperNext
   static Previous = StepperPrevious
@@ -84,12 +86,7 @@ class Stepper extends Component {
   }
 
   getContext = () => {
-    const {
-      steps,
-      stepIndex,
-      canMoveForward,
-      canMoveBack
-    } = this.props
+    const {steps, stepIndex, canMoveForward, canMoveBack} = this.props
     return {
       steps,
       stepIndex,
@@ -104,9 +101,7 @@ class Stepper extends Component {
   render() {
     return (
       <div className="stepper">
-        <StepperContext.Provider value={this.getContext()}>
-          {this.props.children}
-        </StepperContext.Provider>
+        <StepperContext.Provider value={this.getContext()}>{this.props.children}</StepperContext.Provider>
       </div>
     )
   }

@@ -7,14 +7,7 @@ const RadioGroupOption = ({value, label}) => (
   <div className="radio-group-item">
     <RadioContext.Consumer>
       {({contextValue, onChange}) => (
-        <input
-          id={value}
-          name="form"
-          type="radio"
-          onChange={onChange}
-          checked={contextValue === value}
-          value={value}
-        />
+        <input id={value} name="form" type="radio" onChange={onChange} checked={contextValue === value} value={value} />
       )}
     </RadioContext.Consumer>
     <label htmlFor={value}>{value || label}</label>

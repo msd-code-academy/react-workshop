@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react'
 
 import {Online, Offline} from './NetworkStatus'
-import './App.css';
+import './App.css'
 
 class App extends Component {
   render() {
@@ -16,8 +16,8 @@ class App extends Component {
           <Offline />
         </h1>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

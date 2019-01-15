@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import hoistStatics from 'hoist-non-react-statics'
 
 import './App.css'
@@ -22,7 +22,6 @@ const withScreenDimensions = (WrappedComponent) => {
       window.removeEventListener('resize', this.handleResize)
     }
 
-
     handleResize = () => {
       this.setState({
         width: window.innerWidth,
@@ -32,22 +31,14 @@ const withScreenDimensions = (WrappedComponent) => {
 
     render() {
       const {forwardRef, ...props} = this.props
-      return (
-        <WrappedComponent
-          ref={forwardRef}
-          {...props}
-          screenDimensions={this.state}
-        />
-      )
+      return <WrappedComponent ref={forwardRef} {...props} screenDimensions={this.state} />
     }
   }
 
   const displayName = getDisplayName(WrappedComponent)
   ScreenDimensions.displayName = `withScreenDimensions(${displayName})`
 
-  const ForwardRef = React.forwardRef((props, ref) => (
-    <ScreenDimensions forwardRef={ref} {...props} />
-  ))
+  const ForwardRef = React.forwardRef((props, ref) => <ScreenDimensions forwardRef={ref} {...props} />)
   hoistStatics(ForwardRef, WrappedComponent)
   return ForwardRef
 }
@@ -57,8 +48,10 @@ class App extends Component {
   render() {
     const {screenDimensions} = this.props
     return (
-      <div className='App'>
-        <h1>{screenDimensions.width}px by {screenDimensions.height}px</h1>
+      <div className="App">
+        <h1>
+          {screenDimensions.width}px by {screenDimensions.height}px
+        </h1>
       </div>
     )
   }
