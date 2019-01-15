@@ -1,28 +1,56 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+/**
+ * COMPOUND COMPONENT EXERCISE
+ *
+ * Implement Stepper using the compound component API.
+ * We want to be able to re-order the status, active step,
+ * and controls. The API should look like this:
+ *
+ * <Stepper steps={steps}>
+ *   <Stepper.Status />
+ *   <Stepper.ActiveStep />
+ *   <Stepper.Controls />
+ * </Stepper>
+ *
+ * Re-ordering the components rendered inside Stepper
+ * should re-order them in the UI.
+ *
+ * STRETCH GOAL
+ *
+ * Maybe there are use cases for only allowing users to go
+ * forward or back. Implement Stepper.Back and
+ * Stepper.Forward to give our users that options.
+ * Re-implement Stepper.Controls to use those new
+ * components.
+ */
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+import React, { Component } from 'react'
+
+import Stepper from './Stepper'
+import './App.css'
+
+const steps = [
+  {
+    title: "First Step!",
+    content: "Here is the first step, its really good."
+  },
+  {
+    title: "Second Step!",
+    content: "First is the worst, second the best"
+  },
+  {
+    title: "Third Step!",
+    content: "THIRD STEP YOU MADE IT, GOOD JOB!"
   }
-}
+]
 
-export default App;
+const App = () => (
+  <div className="App">
+    <Stepper steps={steps}>
+      <Stepper.Buttons />
+      <Stepper.Status />
+      <Stepper.ActiveStep />
+    </Stepper>
+  </div>
+)
+
+export default App
