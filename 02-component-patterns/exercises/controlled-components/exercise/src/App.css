@@ -1,43 +1,4 @@
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-This is a React Workshop.
-You don't need to look here.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- */
-.App {
+#root {
     display: flex;
 }
 

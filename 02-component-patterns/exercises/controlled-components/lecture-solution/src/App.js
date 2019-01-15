@@ -16,14 +16,14 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <React.Fragment>
         <h5>Value: {this.state.value}</h5>
         <RadioGroup onChange={this.onChange} value={this.state.value}>
           <RadioGroup.Option value="First" />
           <RadioGroup.Option value="Second" />
           <RadioGroup.Option value="Third" />
         </RadioGroup>
-      </div>
+      </React.Fragment>
     )
   }
 }

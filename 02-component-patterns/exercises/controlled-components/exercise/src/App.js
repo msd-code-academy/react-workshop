@@ -47,13 +47,11 @@ const steps = [
 ]
 
 const App = () => (
-  <div className="App">
-    <Stepper steps={steps}>
-      <Stepper.Status />
-      <Stepper.ActiveStep />
-      <Stepper.Controls />
-    </Stepper>
-  </div>
+  <Stepper steps={steps}>
+    <Stepper.Status />
+    <Stepper.ActiveStep />
+    <Stepper.Controls />
+  </Stepper>
 )
 
 export default App

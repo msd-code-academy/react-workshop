@@ -35,18 +35,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Stepper
-          stepIndex={this.state.stepIndex}
-          steps={steps}
-          canMoveForward={this.canMoveForward}
-          canMoveBack={this.canMoveBack}
-          onChange={this.onStepChange}>
-          <Stepper.ActiveStep />
-          <Stepper.Status />
-          <Stepper.Controls />
-        </Stepper>
-      </div>
+      <Stepper
+        stepIndex={this.state.stepIndex}
+        steps={steps}
+        canMoveForward={this.canMoveForward}
+        canMoveBack={this.canMoveBack}
+        onChange={this.onStepChange}>
+        <Stepper.ActiveStep />
+        <Stepper.Status />
+        <Stepper.Controls />
+      </Stepper>
     )
   }
 }
