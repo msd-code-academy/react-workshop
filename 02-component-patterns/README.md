@@ -2,23 +2,23 @@
 
 ## Components
 
-Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of components.
+Components let you split the UI into independent, reusable pieces, and think about each piece in isolation.
 
 #### Function and Class Components
 
-```javascript
-const Welcome = (props) =>  (
-  <h1>Hello, {props.name}</h1>;
-)
-```
 
-```javascript
+const Welcome = (props) =>  (
+  <h1>Hello, {props.name}</h1>
+)
+
+
+
 class Welcome extends React.Component {
   render() {
     return <h1>Hello, {this.props.name}</h1>
   }
 }
-```
+
 
 Differences:
 
@@ -29,13 +29,13 @@ Differences:
 
 ##### Pure Components
 
-```javascript
+
 class Welcome extends React.PureComponent {
   render() {
     return <h1>Welcome</h1>
   }
 }
-```
+
 
 - optimization - reduces the number of render operation in the application
 - calls the method `render` only if it detects changes in `state` or `props` - logic in `shouldComponentUpdate`
@@ -46,7 +46,7 @@ A component with a render prop takes a function that returns a React element and
 
 It gives you a way to pass data from the wrapping component to its inner composed component(s). Because of this function, you can use the children prop within the render prop component. The children prop becomes a children as a function.
 
-```javascript
+
 class Amount extends Component {
   ...
   render() {
@@ -57,8 +57,8 @@ class Amount extends Component {
     )
   }
 }
-```
-```javascript
+
+
 const App () => (
   <Amount
     render={amount => (
@@ -66,8 +66,22 @@ const App () => (
     )}
   />
 )
-```
+
 ### Higher Order Components
+
+Higher-order component is a function that takes a component and returns a new component, transforms a component into another one.
+
+const BlogPostWithSubscription = withSubscription(
+  BlogPost,
+  (DataSource, props) => DataSource.getBlogPost(props.id)
+)
+
+The first parameter is the wrapped component. The second parameter retrieves the data we’re interested in, given a `DataSource` and the current props.
+
+A HOC composes the original component by wrapping it in a container component. A HOC is a pure function with zero side-effects.
+
+
+
 
 ### Compound Components
 
