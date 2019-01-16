@@ -36,6 +36,7 @@ const withOnlineStatus = (WrappedComponent) => {
   OnlineStatus.displayName = `withOnlineStatus(${getDisplayName(WrappedComponent)})`
 
   // Hoist all non-React static methods from the WrappedComponent.
+  // It copies non-React specific statics from a child component to a parent component.
   hoistStatics(OnlineStatus, WrappedComponent)
   return OnlineStatus
 }
