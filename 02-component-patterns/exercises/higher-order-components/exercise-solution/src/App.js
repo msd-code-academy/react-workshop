@@ -30,17 +30,16 @@ const withScreenDimensions = (WrappedComponent) => {
     }
 
     render() {
-      const {forwardRef, ...props} = this.props
-      return <WrappedComponent ref={forwardRef} {...props} screenDimensions={this.state} />
+      const {...props} = this.props
+      return <WrappedComponent {...props} screenDimensions={this.state} />
     }
   }
 
   const displayName = getDisplayName(WrappedComponent)
   ScreenDimensions.displayName = `withScreenDimensions(${displayName})`
 
-  const ForwardRef = React.forwardRef((props, ref) => <ScreenDimensions forwardRef={ref} {...props} />)
-  hoistStatics(ForwardRef, WrappedComponent)
-  return ForwardRef
+  hoistStatics(ScreenDimensions, WrappedComponent)
+  return ScreenDimensions
 }
 
 class App extends Component {
