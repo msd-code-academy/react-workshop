@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 const RadioGroupOption = ({value, label}) => (
   <div className="radio-group-item">
     <input id={value} name="form" type="radio" value={value} />
-    <label htmlFor={value}>{value || label}</label>
+    <label htmlFor={value}>{label || value}</label>
   </div>
 )
 

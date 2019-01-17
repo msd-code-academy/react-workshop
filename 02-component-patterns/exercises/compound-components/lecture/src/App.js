@@ -7,10 +7,7 @@ const navItems = [
   {to: '/', label: 'Home'},
   {to: '/messages', label: 'Messages'},
   {to: '/notifications', label: 'Notifications'},
-  {
-    to: '/profile',
-    label: 'Profile'
-  }
+  {to: '/profile', label: 'Profile'}
 ]
 
 class App extends Component {

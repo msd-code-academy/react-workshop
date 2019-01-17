@@ -18,33 +18,27 @@ const withOnlineStatus = (WrappedComponent) => {
     }
 
     handleOnline = () => {
-      console.log('on')
       this.setState({isOnline: true})
     }
 
     handleOffline = () => {
-      console.log('off')
       this.setState({isOnline: false})
     }
 
     render() {
       const {isOnline} = this.state
-      const {forwardRef, ...props} = this.props
-      return <WrappedComponent ref={forwardRef} {...props} isOnline={isOnline} />
+      const {...props} = this.props
+      return <WrappedComponent {...props} isOnline={isOnline} />
     }
   }
 
+  // Use a displayName that identifies this as a HOC
   OnlineStatus.displayName = `withOnlineStatus(${getDisplayName(WrappedComponent)})`
 
-  function forwardRef(props, ref) {
-    return <OnlineStatus {...props} forwardRef={ref} />
-  }
-
-  forwardRef.displayName = OnlineStatus.displayName
-
-  const ForwardRef = React.forwardRef(forwardRef)
-  hoistStatics(ForwardRef, WrappedComponent)
-  return ForwardRef
+  // Hoist all non-React static methods from the WrappedComponent.
+  // It copies non-React specific statics from a child component to a parent component.
+  hoistStatics(OnlineStatus, WrappedComponent)
+  return OnlineStatus
 }
 
 export const Online = withOnlineStatus(

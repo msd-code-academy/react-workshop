@@ -9,7 +9,6 @@
  *
  * 1. Sets a helpful displayName
  * 2. Works with components that have static properties
- * 3. Can forward refs to the component its wrapping
  *
  */
 
