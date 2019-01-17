@@ -1,0 +1,25 @@
+.App {
+    text-align: center;
+    display: flex;
+}
+
+.App-counter {
+    margin: 50px auto;
+    padding: 15px;
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    text-align: center;
+    max-width: 80%;
+}
+
+.App-counter-btn {
+    background-color: #0064ff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    outline: none;
+    margin-right: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}

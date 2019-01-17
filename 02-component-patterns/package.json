@@ -1,0 +1,13 @@
+{
+  "name": "react-workshop-component-patterns",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Blazek Adam <adam.blazek@merck.com>",
+  "license": "MIT",
+  "scripts": {
+    "prettier": "prettier --write \"exercises/**/*.js\""
+  },
+  "dependencies": {
+    "prettier": "^1.15.3"
+  }
+}
