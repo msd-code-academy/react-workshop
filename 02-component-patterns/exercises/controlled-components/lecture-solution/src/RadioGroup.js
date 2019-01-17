@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-// import memoize from "memoize-one";
 
 const RadioContext = React.createContext()
 
