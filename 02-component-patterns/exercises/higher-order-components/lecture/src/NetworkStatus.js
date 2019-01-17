@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+// import hoistStatics from 'hoist-non-react-statics'
 
 export class Online extends Component {
   static ConnectionSpeed = () => {
