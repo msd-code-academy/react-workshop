@@ -81,8 +81,12 @@ The first parameter is the wrapped component. The second parameter retrieves the
 A HOC composes the original component by wrapping it in a container component. A HOC is a pure function with zero side-effects.
 
 
-
-
 ### Compound Components
+
+Compound components leave your JSX markup clean. You can truly focus on presentation while the logic is tucked away in container components.
+
+Compound components is a pattern in which components are used together such that they share an implicit state that let’s them communicate with each other in the background.
+
+Using `React.cloneElement` or `Context API` 
 
 ### Controlled Components
