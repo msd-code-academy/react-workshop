@@ -6,10 +6,6 @@ export default class Stepper extends Component {
     activeStepIndex: 0
   }
 
-  findActiveStep = (step) => {
-    return step.id === this.state.activeStepId
-  }
-
   stepForward = () => {
     this.setState((state) => {
       return {
