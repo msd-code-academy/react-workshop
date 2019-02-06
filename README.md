@@ -10,4 +10,5 @@ Please run `npm audit` before using any of our examples at a later date (the 3rd
 * 00 (2018-11-08) [Props / State / Redux - how to decide](00-props-state)
 * 01 (2018-12-06) [React Hooks](01-react-hooks)
 * 02 (2019-01-17) [Component Patterns](02-component-patterns)
-* ...
+* 03 (2019-02-07) [CSS debugging tips and tricks](03-css-debugging)
+* ... every first Thursday of a month (?)
