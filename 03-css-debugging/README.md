@@ -10,17 +10,18 @@ Before workshop:
 ```sh
 git clone https://github.com/msd-code-academy/react-workshop.git
 cd react-workshop/03-css-debug/
-npm i  # or `yarn`
+npm i
 ```
 
-At the workshop start (because we might do last-minute fixes):
+At the workshop start:
 ```sh
-git pull
+git pull  # because we might do last-minute fixes
+npm start
 ```
 
 ## Content
 
-* TODO links to code / live preview
+* TODO links to code examples
 
 ## Useful tips
 
