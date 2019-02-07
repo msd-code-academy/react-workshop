@@ -2,10 +2,12 @@
   .first {
     color: skyblue;
   }
+
   .second {
     color: navy;
   }
-  &__niceName {
+
+  &__niceName { // <-- won't be found by fulltext search of whole class name
     color: maroon;
   }
 }
@@ -24,6 +26,7 @@
   .Z__shouldBeOnTop {
     z-index: 9999;
   }
+
   .Z__evilStackingContext {
     position: relative;
     display: inline-block;
@@ -40,6 +43,59 @@
 }
 
 
+
+
+.Selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__buttonWannaBe { // <-- "value" 10
+    background: darkolivegreen;
+  }
+
+  .Selector__buttonModified { // <-- "value" 20
+    background: darkolivegreen;
+  }
+}
+
+
+
+
+.Responsive {
+  width: 1200px;
+  @media (max-width: 1200px) {
+    width: 100%; // <-- % of what?
+  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 70px);
+
+  div {
+    border: 1px solid gray;
+    margin: 5px;
+    text-align: center;
+  }
+}
+
+
+
+
+.Transitions {
+  cursor: default;
+  color: darkolivegreen;
+  transition: 1ms;
+
+  &:hover {
+    color: green;
+    font-weight: bold;
+    transition: 1s;
+  }
+}
+
+
+
+
 #ddfdsfas, div[dsfas*=fsafdsa], .first.second, .dfasfsafasdfc {
+  // overwriting Intro styles "by accident"
   color: red;
 }

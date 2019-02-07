@@ -26,7 +26,10 @@ cd src/examples/
 ```
 * 00 Intro
   * Using [browser inspector](https://developers.google.com/web/tools/chrome-devtools/css/) (right click > Inspect)
-  * Good class names more important due to lack of step-by-step debug
+    * No step-by-step debug
+    * So good class names are more important
+    * Or at least React component names, including [HOC](https://reactjs.org/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging)
+    * Temporary background / outline also useful
   * Know thy framework / use consistent code style to simplify search in code
   * CSS vs CSS-in-JS => hot reload vs cleaner code over time
 * 01 Vertical alignment
@@ -39,8 +42,16 @@ cd src/examples/
   * if they need to overlap in arbitrary ways, best to go `absolute`
   * or [`grid`](https://css-tricks.com/snippets/css/complete-guide-grid/) (order in HTML according to Z order, manual row+column for position)
 * 03 Selector specificity
-  * TODO
-* 04 Responsive
-  * TODO
+  * CSS [Cascade](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade) and [Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
+  * Simplified model - do a sum of "values" for each part of the selector:
+    * 1 for `div` or `::before`
+    * 10 for `.class` or `:hover`
+    * 100 for `#id`
+    * 999 for inline
+    * 1000 for `!important` in the rule 
+* 04 Responsive design
+  * Always test, open multiple windows or connect devices
+  * `flex-wrap`, `grid-template-columns`, `<Col md={12} />`, `min-width`, ... not just @media
 * 05 Transitions
-  * TODO
+  * `transition` property applied from the "after" / "new" selector
+* Q&A 

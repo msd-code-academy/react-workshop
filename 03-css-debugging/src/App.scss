@@ -1,19 +1,23 @@
 .App {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
   height: 100vh;
-  background: #aaa;
+  background: #aaafae;
+  font-size: 32px;
 }
 
 .App__header {
   margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
   a {
     color: #557;
     text-decoration: none;
-    padding: 0 5px;
+    padding: 0 10px;
+    transition: 0.2s;
   }
   a.active {
     color: black;
@@ -28,14 +32,18 @@
   display: flex;
   flex: 1;
 
-  *:not(.Vertical) {
+  & > *:not(.Vertical) {
     margin: auto;
   }
 }
 
+// !! Keep following code, to uncomment during parts of live demo. !!
+//
 //$debugColor: #c30;
 //* {
 //  background: rgba($debugColor, .1) !important;
 //  outline: 1px dotted $debugColor !important;
 //  color: $debugColor !important;
 //}
+//
+// !! End keep !!
