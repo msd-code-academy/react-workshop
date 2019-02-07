@@ -1,8 +1,41 @@
-$debugColor: transparent;
-
 .App {
-  background: $debugColor;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  height: 100vh;
+  background: #aaa;
 }
+
+.App__header {
+  margin: 10px;
+
+  a {
+    color: #557;
+    text-decoration: none;
+    padding: 0 5px;
+  }
+  a.active {
+    color: black;
+    font-weight: bold;
+  }
+  a:hover {
+    color: #33b;
+  }
+}
+
+.App__content {
+  display: flex;
+  flex: 1;
+
+  *:not(.Vertical) {
+    margin: auto;
+  }
+}
+
+//$debugColor: #c30;
+//* {
+//  background: rgba($debugColor, .1) !important;
+//  outline: 1px dotted $debugColor !important;
+//  color: $debugColor !important;
+//}

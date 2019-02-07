@@ -1,0 +1,45 @@
+.Intro {
+  .first {
+    color: skyblue;
+  }
+  .second {
+    color: navy;
+  }
+  &__niceName {
+    color: maroon;
+  }
+}
+
+
+
+
+.Vertical {
+  vertical-align: center; // <-- doesn't work
+}
+
+
+
+
+.Z {
+  .Z__shouldBeOnTop {
+    z-index: 9999;
+  }
+  .Z__evilStackingContext {
+    position: relative;
+    display: inline-block;
+    &::after {
+      z-index: 1;
+      position: absolute;
+      top: -20px;
+      right: 0;
+      color: red;
+      content: 'X';
+      font-size: 2em;
+    }
+  }
+}
+
+
+#ddfdsfas, div[dsfas*=fsafdsa], .first.second, .dfasfsafasdfc {
+  color: red;
+}
