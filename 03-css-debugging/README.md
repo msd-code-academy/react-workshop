@@ -26,7 +26,10 @@ cd src/examples/
 ```
 * 00 Intro
   * Using [browser inspector](https://developers.google.com/web/tools/chrome-devtools/css/) (right click > Inspect)
-  * Good class names more important due to lack of step-by-step debug
+    * No step-by-step debug
+    * So good class names are more important
+    * Or at least React component names, including [HOC](https://reactjs.org/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging)
+    * Temporary background / outline also useful
   * Know thy framework / use consistent code style to simplify search in code
   * CSS vs CSS-in-JS => hot reload vs cleaner code over time
 * 01 Vertical alignment
