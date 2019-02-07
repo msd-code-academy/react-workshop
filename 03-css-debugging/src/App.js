@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
-import './App.scss';
+import React  from 'react'
+import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom'
+import './App.scss'
+import examples from './examples'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        Case 01: vertical alignment
+const App = () => (
+  <Router>
+    <div className="App">
+      <div className="App__header">
+        {examples.map(ex => <NavLink key={ex.id} to={`/${ex.id}`}>{ex.title}</NavLink>)}
       </div>
-    );
-  }
-}
 
-export default App;
+      <div className="App__content">
+        {examples.map(ex => <Route key={ex.id} path={`/${ex.id}`} component={ex.component} />)}
+      </div>
+    </div>
+  </Router>
+)
+
+export default App

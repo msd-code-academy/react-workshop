@@ -21,8 +21,26 @@ npm start
 
 ## Content
 
-* TODO links to code examples
-
-## Useful tips
-
-* TODO links to external pages
+```sh
+cd src/examples/
+```
+* 00 Intro
+  * Using [browser inspector](https://developers.google.com/web/tools/chrome-devtools/css/) (right click > Inspect)
+  * Good class names more important due to lack of step-by-step debug
+  * Know thy framework / use consistent code style to simplify search in code
+  * CSS vs CSS-in-JS => hot reload vs cleaner code over time
+* 01 Vertical alignment
+  * Parent height
+  * [`vertical-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align) is only for inline and table cells
+  * Know thy [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) (or trial & error)
+* 02 Z-index
+  * [Stacking context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context)
+  * `static` content is for elements that keep to themselves
+  * if they need to overlap in arbitrary ways, best to go `absolute`
+  * or [`grid`](https://css-tricks.com/snippets/css/complete-guide-grid/) (order in HTML according to Z order, manual row+column for position)
+* 03 Selector specificity
+  * TODO
+* 04 Responsive
+  * TODO
+* 05 Transitions
+  * TODO
