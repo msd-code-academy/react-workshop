@@ -1,0 +1,16 @@
+.lib {
+  $bg: #998;
+  &-button {
+    border-radius: 5px;
+    border: 1px solid darken($bg, 20);
+    background: $bg;
+    font-size: inherit;
+    padding: 3px 10px;
+    margin: 3px;
+    cursor: pointer;
+  }
+  &-button:hover {
+    background: darken($bg, 10);
+    border-color: darken($bg, 100);
+  }
+}
