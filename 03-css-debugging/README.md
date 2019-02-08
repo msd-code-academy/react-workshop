@@ -31,6 +31,7 @@ cd src/examples/
     * Or at least React component names, including [HOC](https://reactjs.org/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging)
     * Temporary background / outline also useful
   * Know thy framework / use consistent code style to simplify search in code
+    * Choose a library that does not use !important rules
   * CSS vs CSS-in-JS => hot reload vs cleaner code over time
 * 01 Vertical alignment
   * Parent height
@@ -54,4 +55,5 @@ cd src/examples/
   * `flex-wrap`, `grid-template-columns`, `<Col md={12} />`, `min-width`, ... not just @media
 * 05 Transitions
   * `transition` property applied from the "after" / "new" selector
+  * `height: auto` cannot be calculated, use `min/max-height` or fixed heights for transitions (or JS library)
 * Q&A 
