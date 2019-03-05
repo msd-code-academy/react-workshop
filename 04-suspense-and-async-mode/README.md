@@ -2,14 +2,13 @@
 
 ## Code Splitting
 
-* Bundling your application is great, but as your app grows, your bundle size will grow too, especially if you are including large 3rd party libraries
-* This may have a huge impact on the time to first load and UX
-* The bundle can be split into smaller chunks where the most important ones can be loaded first and then every other secondary are lazily loaded, so called **code splitting**
+* Bundling your application is great, but as your app grows, your bundle size will grow too, especially if you include large 3rd party libraries
+* This may have a huge impact on the time to first load and UX, especially on slow networks
+* The bundle can be split into smaller chunks where the most important ones can be loaded first and then every other secondary are lazily loaded - **code splitting**
 
 ### What Is Code Splitting
 
 * Multiple bundles are created that are loaded dynamically, only at the time they are needed
-* Enables to **lazy-load** just the components that are currently needed by the user
 * Can significantly improve performance of your app
 
 ### React.lazy
@@ -48,10 +47,11 @@ const MyComponent = () => (
 );
 ```
 
-* lazy() Takes a function that calls the dynamic `import()` => it must return a Promise which resolves to a module containing a React component
+* lazy() Takes a function that calls the dynamic `import()` - that must return a Promise which resolves to a module containing React component
 * Using lazy loaded component on its own **will throw an error**, we have to wrap it in Suspense component
-* But besides that we can use lazy loaded component the same way we use standard components
-* NOTE: React.lazy supports only default exports, if you want to use named exports, you must use intermediate module that reexports it as the default
+* But besides that, we can use lazy loaded component the same way we use standard components
+* React.lazy supports only default exports, if you want to use named exports, you must use intermediate module that reexports it as the default
+* lazy() and Suspense is [not yet available for server-side rendering](https://reactjs.org/docs/code-splitting.html#reactlazy)
 
 ### Suspense
 
@@ -72,8 +72,8 @@ const MyComponent = () => (
 ```
 
 * You can place the `Suspense` anywhere above the lazy loaded component
-* It doesn't matter how deep is the lazy loaded component nested, it works similar to try-catch syntax - first Suspense component up in the component tree will catch the dynamic content and display fallback
-* You can wrap multiple lazy components inside a single `Suspense` component => it will display fallback until all dynamic components are loaded. Try to **avoid multiple spinners next to each other**
+* It doesn't matter how deep the lazy loaded component is nested, it works similar to try-catch syntax - first Suspense component up in the component tree will catch the dynamic content and display fallback
+* You can wrap multiple lazy components inside a single `Suspense` component => it will display fallback until all nested dynamic components are loaded. Try to **avoid multiple spinners next to each other**
 * Replaces [react loadable](https://github.com/jamiebuilds/react-loadable)
 
 ```javascript
@@ -117,7 +117,7 @@ const App = () => (
 );
 ```
 
-> Exercise 1 => [use Suspense with lazy()](./exercise/src/App.js)
+> Exercise 1 => [Use Suspense with lazy()](./exercise-lazy/src/App.js)
 
 ***
 **What we've gone through until now is in the production, from now on we will talk about the future**
@@ -147,12 +147,14 @@ const Img = ({src, alt, ...props}) => {
   // if no image with given source is found in the resource (cache), this line will throw a promise:
   ImageResource.read(src);
 
-  // And this line will have to wait until that promise resolves:
+  // When the promise is resolved, the component's render will be called again and
+  // this time ImageResource.read(src) will not throw (resource is already cached)
+  // and component will be rendered
   return <img src={src} alt={alt} {...props} />;
 };
 ```
 
-We can use `Img` component inside `Suspense` as simply as:
+And use `Img` component inside `Suspense` as simply as:
 
 ```javascript
 <Suspense fallback={<div>I am downloading the image...</div>}>
@@ -160,46 +162,51 @@ We can use `Img` component inside `Suspense` as simply as:
 </Suspense>
 ```
 
-React.Suspense has a componentDidCatch sort of mechanism which will catch the promise thrown by `ImageResource.read()` and show a fallback until the promise is resolved
+* React.Suspense has a componentDidCatch sort of mechanism which will catch the promise thrown by `ImageResource.read()` and show a fallback until the promise is resolved.  
+* To extend this to include an API call to get the URL of an image is easy, let's try it:
 
-> Demo
+> Exercise 2 => [Use Suspense with data fetch and images](./exercise-fetch/src/pages/kitties.jsx)
 
 ## Concurrent Mode (Asynchronous Rendering)
 
-> "Concurrent Mode lets React apps be more responsive by rendering component trees without blocking the main thread." - Dan Abramov
+"Concurrent Mode lets React apps be more responsive by rendering component trees without blocking the main thread." - Dan Abramov
 
-* Formerly known as "Async mode", but "Concurrent mode" has been chosen eventually because it reflects more the ability to perform work on different priority levels
+![Lifecycle Methods Overview](./images/concurrent_mode_explained.png)
+> [Source: Andrew Clark's twitter post](https://twitter.com/acdlite/status/977291318324948992)
+
+* Formerly known as "Async mode", but "Concurrent mode" name has been chosen eventually because it reflects more the ability to perform work on different priority levels
 * Allows React to interrupt a long-running render (for example, rendering a new feed story) to handle a high-priority event (for example, text input or hover)
-* keeps your app responsive while rendering complex component trees
-* Also improves the user experience of Suspense by skipping unnecessary loading states on fast connections
-* Concurrent mode is the future of React, so far only in experimental state.
+* Keeps your app responsive while rendering complex component trees
+* Allows Suspense to skip unnecessary loading states on fast connections (flashing spinners)
+* Concurrent mode is the future of React, but so far only in experimental state.
 * In Road map planned for Q2 2019
 * No documentation yet
 
-What's possible in Async mode? E.g. skipping unnecessary loading states on fast connections when using Suspense.  
-When we use lazy loaded components, small delay in load is not noticeable by user. There is a threshold - if the component load is delayed, but it still loads "fast enough", then it's counterproductive to display the spinner - it can harm **perceived** performance of the app.
+If you want to know more about how the concurrent mode is implemented, check out `fiber` and `algebraic effects`
 
 ### Enabling The Concurrent Mode
 
-```javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+Instead of
 
+```javascript
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+simply use:
+
+```javascript
 ReactDOM
   .createRoot(document.getElementById('root'))
   .render(<App />);
 ```
 
-### maxDuration
-
-maxDuration prop of Suspense in concurrent mode defines the time in ms after which our fallback component will show up. This will avoid screen flickering issue which usually occurs on faster network where the loader shows up for few ms and then the data comes immediately.
+This will allow to use new features, e.g. maxDuration prop of Suspense - it defines the time in ms after which our fallback component will show up. This will avoid screen flickering issue which usually occurs on faster network where the loader shows up for few ms and then the data comes immediately.
 
 ### Important Changes In React With Concurrent Mode
 
-Use `<React.StrictMode>` to reveal potential problems after enabling concurrent mode - [see more here](https://reactjs.org/docs/strict-mode.html#identifying-unsafe-lifecycles)
+As render can be called multiple times in Concurrent Mode, some methods are no longer safe to use. Wrap your application in `<React.StrictMode>` to reveal potential problems - [see more here](https://reactjs.org/docs/strict-mode.html#identifying-unsafe-lifecycles)
 
-Following lifecycle methods will be deprecated in future versions of React and can be problematic with Concurrent Rendering:
+Following lifecycle methods will be deprecated in future:
 
 * `componentWillMount`
 * `componentWillReceiveProps`
@@ -211,20 +218,20 @@ Two new lifecycle methods will be added as a replacement:
 * `getDerivedStateFromProps`
 
 ![Lifecycle Methods Overview](./images/concurrent_lifecycle_methods.jpeg)
+> [Source: Dan Abramov's twitter post](https://twitter.com/dan_abramov/status/981712092611989509/photo/1)
 
-## Notes
-
-* lazy() and Suspense is [not yet available for server-side rendering](https://reactjs.org/docs/code-splitting.html#reactlazy)
-
-## Conclusion
-
-* Great solution for code splitting and improving UX
-* Concurrent mode in early development so far, but it is the future of React
+***It's crucial to have your render methods/functions pure, without any side effects!***
 
 ## Sources and Further Reading
 
-* [Code Splitting the React app - official documentation]([https://reactjs.org/docs/hooks-intro.html](https://reactjs.org/docs/code-splitting.html))
+### Talks
+
 * [Andrew Clark's talk on React Suspense](https://www.youtube.com/watch?v=z-6JC0_cOns)
 * [Dan Abramov's talk on React Suspense](https://www.youtube.com/watch?v=6g3g0Q_XVb4) from ReactFest
 * [Jared Palmer's talk on React Suspense](https://www.youtube.com/watch?v=SCQgE4mTnjU) from React Conf 2018
 * [Talk of Andrew Clark and Brian Vaughn on Concurrent Rendering in React](https://www.youtube.com/watch?v=ByBPyMBTzM0) from React Conf 2018
+
+### Articles And Documentation
+
+* [Code Splitting the React app - official documentation]([https://reactjs.org/docs/hooks-intro.html](https://reactjs.org/docs/code-splitting.html))
+* [Marvin Frachet - React-cache, time slicing, and fetching with a synchronous API](https://medium.freecodecamp.org/react-cache-time-slicing-and-fetching-with-a-synchronous-api-2a57dc9c2e6d) => advanced reading on how is the concurrent mode implemented

@@ -2,6 +2,8 @@ import React, {Suspense} from 'react';
 import {unstable_createResource as createResource} from 'react-cache';
 import './kitties.css';
 
+import Spinner from '../components/spinner';
+
 const catApiResource = createResource(async() => {
   const response = await fetch('https://api.thecatapi.com/v1/images/search');
   const [result] = await response.json();
@@ -15,7 +17,7 @@ const catApiResource = createResource(async() => {
 
 const KittyImage = ({ID}) => {
   const url = catApiResource.read(ID);
-  return <img src={url} alt="randomKitty" className="kitty-image" />;
+  return <img src={url} alt="random kitty" />;
 };
 
 export default class Kitties extends React.Component {
@@ -34,8 +36,7 @@ export default class Kitties extends React.Component {
     return (
       <div className="kitties">
         <button onClick={this._handleButtonClick}>Show Another Kitty</button>
-        <Suspense fallback={<div>Loading the kitty...</div>}
-          maxDuration={3000}>
+        <Suspense fallback={<Spinner>Loading the kitty...</Spinner>}>
           <KittyImage ID={catID} />
         </Suspense>
       </div>

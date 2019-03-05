@@ -1,10 +1,6 @@
 import React from 'react';
 
-// We are definitely not importing the whole lodash here :D
-import _ from 'lodash';
-
 const Content = () => {
-  const fruit = ['apple', 'cherry', 'banana'];
 
   // console.log('I started to delay the render');
   // for (let i = 0; i < 4e9; i++) {
@@ -15,7 +11,6 @@ const Content = () => {
   return (
     <div>
       <h1>Large Content Page</h1>
-      {_.map(fruit, item => <div key={item}>I like {item}</div>)}
       <h2>Let&apos;s Discuss It In Detail</h2>
       <p>Duis bibendum, lectus ut viverra rhoncus, dolor nunc faucibus libero, eget facilisis enim ipsum id lacus. Etiam posuere lacus quis dolor. Morbi scelerisque luctus velit. Fusce tellus odio, dapibus id fermentum quis, suscipit id erat. Nullam sapien sem, ornare ac, nonummy non, lobortis a enim. Nullam justo enim, consectetuer nec, ullamcorper ac, vestibulum in, elit. Integer malesuada. Donec vitae arcu. Vivamus ac leo pretium faucibus. Aenean fermentum risus id tortor. Mauris suscipit, ligula sit amet pharetra semper, nibh ante cursus purus, vel sagittis velit mauris vel metus. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Praesent dapibus. Vestibulum erat nulla, ullamcorper nec, rutrum non, nonummy ac, erat. Aliquam erat volutpat. Mauris dictum facilisis augue. Integer rutrum, orci vestibulum ullamcorper ultricies, lacus quam ultricies odio, vitae placerat pede sem sit amet enim. Phasellus faucibus molestie nisl. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.</p>
       <p>Nulla quis diam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris elementum mauris vitae tortor. Suspendisse sagittis ultrices augue. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est. Maecenas ipsum velit, consectetuer eu lobortis ut, dictum at dui. Mauris suscipit, ligula sit amet pharetra semper, nibh ante cursus purus, vel sagittis velit mauris vel metus. Integer tempor. Maecenas libero. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. Nullam feugiat, turpis at pulvinar vulputate, erat libero tristique tellus, nec bibendum odio risus sit amet ante. Etiam commodo dui eget wisi. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Ut tempus purus at lorem. Phasellus rhoncus. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Donec vitae arcu. Donec iaculis gravida nulla. Etiam bibendum elit eget erat. Maecenas libero.</p>
