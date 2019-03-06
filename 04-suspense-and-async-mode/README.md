@@ -13,7 +13,7 @@
 
 ### React.lazy
 
-* lazy() is a function that enables you to to render a dynamic import as a regular component
+* lazy() is a function that enables you to render a dynamic import as a regular component
 * Will automagically load the bundle with the dynamically imported component at the moment it is required to render
 
 #### Standard import
