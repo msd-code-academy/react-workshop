@@ -9,7 +9,10 @@ import PragueImage from './pages/prague-image';
 // Exercise 1
 //
 // Rewrite this component so that it uses lazy() and Suspense for code splitting
-// Display the Spinner from './components/spinner' until the lazy loaded component are ready
+// Display the Spinner from './components/spinner' until the lazy loaded components are ready
+//
+// 10 minutes, then we will do it together
+// Check the "network" in developer tools when done
 
 const App = () => (
   <Router>

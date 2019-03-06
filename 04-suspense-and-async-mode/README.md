@@ -13,17 +13,18 @@
 
 ### React.lazy
 
-* lazy() is a function that enables you to render a dynamic import as a regular component
-* Will automagically load the bundle with the dynamically imported component at the moment it is required to render
+* lazy() is a function that Returns component - it enables you to render a dynamic import
+* Will automagically download the bundle with component at the moment it is required to render
 
-#### Standard import
+#### Standard Import
 
 ```javascript
-import {ContactDetails} from './contactDetails';
+import ContactDetails from './contactDetails';
 ```
 
-#### Dynamic import
+#### Dynamic Import Syntax
 
+* Import that returns promise
 * If you're using **Create React App**, then this is enabled by default
 * Otherwise it has to be configured in Webpack
 
@@ -35,9 +36,13 @@ import('./contactDetails').then({ContactDetails} => {
 
 #### React.lazy()
 
+* It's first and only argument takes a function that returns dynamic import
+
 ```javascript
 import {React, lazy} from 'react';
-const ContactDetails = lazy(() => import('./contactDetails'));
+const ContactDetails = lazy(
+  () => import('./contactDetails')
+);
 
 const MyComponent = () => (
   <div>
@@ -47,15 +52,11 @@ const MyComponent = () => (
 );
 ```
 
-* lazy() Takes a function that calls the dynamic `import()` - that must return a Promise which resolves to a module containing React component
-* Using lazy loaded component on its own **will throw an error**, we have to wrap it in Suspense component
-* But besides that, we can use lazy loaded component the same way we use standard components
-* React.lazy supports only default exports, if you want to use named exports, you must use intermediate module that reexports it as the default
-* lazy() and Suspense is [not yet available for server-side rendering](https://reactjs.org/docs/code-splitting.html#reactlazy)
+* Using lazy loaded component on its own **will throw an error**, we have to wrap it in `Suspense` component
 
 ### Suspense
 
-* Suspense is a React component that displays fallback content (e.g. spinner) while waiting for the dynamic component to load
+* Suspense is a React component that displays fallback content (e.g. spinner) while waiting for the dynamic content to load
 * Fallback can be any valid react component
 
 ```javascript
@@ -71,10 +72,9 @@ const MyComponent = () => (
 );
 ```
 
-* You can place the `Suspense` anywhere above the lazy loaded component
+* We can (and must) place the `Suspense` anywhere above the lazy loaded component, but despite that we can use the component the same way we use standard components
 * It doesn't matter how deep the lazy loaded component is nested, it works similar to try-catch syntax - first Suspense component up in the component tree will catch the dynamic content and display fallback
-* You can wrap multiple lazy components inside a single `Suspense` component => it will display fallback until all nested dynamic components are loaded. Try to **avoid multiple spinners next to each other**
-* Replaces [react loadable](https://github.com/jamiebuilds/react-loadable)
+* We can wrap multiple lazy components inside a single `Suspense` component => it will display fallback until all nested dynamic components are loaded. That's convenient e.g. to **avoid multiple spinners next to each other**
 
 ```javascript
 import {React, lazy, Suspense} from 'react'
@@ -94,7 +94,13 @@ const MyComponent = () => (
 );
 ```
 
-### Route based code splitting
+### Notes
+
+* React.lazy supports only default exports, if you want to use named exports, you must use intermediate module that reexports it as the default
+* lazy() and Suspense is [not yet available for server-side rendering](https://reactjs.org/docs/code-splitting.html#reactlazy)
+* Replaces [react loadable](https://github.com/jamiebuilds/react-loadable) - no new idea, just internalized and easy to use
+
+### Route Based Code Splitting
 
 Good place to start with code splitting is with individual Routes - it makes sense to load only pages your user visits.
 
@@ -102,8 +108,8 @@ Good place to start with code splitting is with individual Routes - it makes sen
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React, { Suspense, lazy } from 'react';
 
-const Home = lazy(() => import('./routes/Home'));
-const About = lazy(() => import('./routes/About'));
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
 
 const App = () => (
   <Router>
@@ -128,9 +134,11 @@ const App = () => (
 * Planned in the near future (mid 2019), now **experimental** package `react-cache`
 * Eventually most data fetching should happen through Suspense but it will take a long time until all integrations are ready for that
 
-First a resource needs to be created which is basically an object that has a `read()` method. This method takes key as its only parameter, which is a key for the hash map.
+### How To Use
 
-We can implement e.g. component for loading images:
+First, a resource needs to be created (which is basically an object that has a `read()` method. This method takes key as its only parameter - key for the hash map).
+
+We can implement e.g. component for image loading:
 
 ```javascript
 import React, {Suspense} from 'react';
@@ -139,31 +147,31 @@ import {unstable_createResource as createResource} from 'react-cache';
 const ImageResource = createResource(src => new Promise(resolve => {
   // Creates an image object and resolves a promise once the image loads
   const img = new Image();
-  img.onload = () => resolve();
+  img.onload = () => resolve(src);
   img.src = src;
 }));
 
 const Img = ({src, alt, ...props}) => {
   // if no image with given source is found in the resource (cache), this line will throw a promise:
-  ImageResource.read(src);
+  const url = ImageResource.read(src);
 
   // When the promise is resolved, the component's render will be called again and
   // this time ImageResource.read(src) will not throw (resource is already cached)
   // and component will be rendered
-  return <img src={src} alt={alt} {...props} />;
+  return <img src={url} alt={alt} {...props} />;
 };
 ```
 
 And use `Img` component inside `Suspense` as simply as:
 
-```javascript
+```xml
 <Suspense fallback={<div>I am downloading the image...</div>}>
   <Img src="https://path/to/image.jpg" alt="My image" />
 </Suspense>
 ```
 
 * React.Suspense has a componentDidCatch sort of mechanism which will catch the promise thrown by `ImageResource.read()` and show a fallback until the promise is resolved.  
-* To extend this to include an API call to get the URL of an image is easy, let's try it:
+* It's easy to extend this code to include an API call to fetch URL of some image before downloading it, let's try it:
 
 > Exercise 2 => [Use Suspense with data fetch and images](./exercise-fetch/src/pages/kitties.jsx)
 

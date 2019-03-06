@@ -11,6 +11,9 @@ import Spinner from '../components/spinner';
 // Your tasks is to rewrite this so that it uses Suspense and react-cache:
 // import {unstable_createResource as createResource} from 'react-cache';
 // to achieve the same functionality
+//
+// 15 minutes, then we will do it together
+// Check the "network" in developer tools when done
 
 const KittyImage = ({src}) => (
   <img src={src} alt="random kitty" />
