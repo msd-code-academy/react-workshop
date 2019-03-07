@@ -67,6 +67,3 @@ typings/
 # mac file system
 .DS_Store
 
-# ignore lock files to avoid endorsing vulnerable packages (recommend `npm audit` in README)
-package-lock.json
-yarn.lock
