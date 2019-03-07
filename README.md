@@ -11,4 +11,6 @@ Please run `npm audit` before using any of our examples at a later date (the 3rd
 * 01 (2018-12-06) [React Hooks](01-react-hooks)
 * 02 (2019-01-17) [Component Patterns](02-component-patterns)
 * 03 (2019-02-07) [CSS debugging tips and tricks](03-css-debugging)
+* 04 (2019-03-07) [React Suspense and Concurrent Mode](04-suspense-and-async-mode)
+* 05 (2019-04-04) Unit testing in React
 * ... every first Thursday of a month (?)

@@ -1,5 +1,7 @@
 # React Suspense and Concurrent Mode
 
+## [https://github.com/msd-code-academy/react-workshop](https://github.com/msd-code-academy/react-workshop)
+
 ## Code Splitting
 
 * Bundling your application is great, but as your app grows, your bundle size will grow too, especially if you include large 3rd party libraries
@@ -243,3 +245,10 @@ Two new lifecycle methods will be added as a replacement:
 
 * [Code Splitting the React app - official documentation]([https://reactjs.org/docs/hooks-intro.html](https://reactjs.org/docs/code-splitting.html))
 * [Marvin Frachet - React-cache, time slicing, and fetching with a synchronous API](https://medium.freecodecamp.org/react-cache-time-slicing-and-fetching-with-a-synchronous-api-2a57dc9c2e6d) => advanced reading on how is the concurrent mode implemented
+
+## Next Time
+
+### Unit Testing in React
+
+* Best practices on how to write unit tests for React application
+* **4 April 2019** (Thursday) - mark your calendars
