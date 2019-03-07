@@ -213,12 +213,14 @@ ReactDOM
 This will allow to use new features, e.g.:
 
 * `maxDuration` prop of Suspense - it defines the time in ms after which our fallback component will show up. This will avoid screen flickering issue which usually occurs on faster network where the loader shows up for few ms and then the data comes immediately
-* `scheduleCallback` function - will defer the callback execution (e.g. setState) until all priority tasks are done
-* To see the demo, visit [talk of Andrew Clark and Brian Vaughn on Concurrent Rendering in React](https://www.youtube.com/watch?v=ByBPyMBTzM0)
+* `scheduleCallback` function - will defer the callback execution (e.g. setState) until all priority tasks are done [demo by Andrew Clark](https://www.youtube.com/watch?v=ByBPyMBTzM0&t=1176)
+* To learn more, I encourage you to see the whole [talk of Andrew Clark and Brian Vaughn on Concurrent Rendering in React](https://www.youtube.com/watch?v=ByBPyMBTzM0)
 
 ### Important Changes In React With Concurrent Mode
 
-As render can be called multiple times in Concurrent Mode, some methods are no longer safe to use. Wrap your application in `<React.StrictMode>` to reveal potential problems - [see more here](https://reactjs.org/docs/strict-mode.html#identifying-unsafe-lifecycles)
+As render can (and will) be called multiple times in Concurrent Mode, some methods are no longer safe to use. Wrap your application in `<React.StrictMode>` to reveal potential problems - [see more here](https://reactjs.org/docs/strict-mode.html#identifying-unsafe-lifecycles)
+
+[Let's try it together](./exercise-lazy/src/index.js)
 
 Following lifecycle methods will be deprecated in future:
 
