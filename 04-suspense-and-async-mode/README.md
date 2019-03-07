@@ -15,7 +15,7 @@
 
 ### React.lazy
 
-* lazy() is a function that Returns component - it enables you to render a dynamic import
+* lazy() is a function that returns component - it enables you to render a dynamic import
 * Will automagically download the bundle with component at the moment it is required to render
 
 #### Standard Import
@@ -67,7 +67,7 @@ const ContactDetails = lazy(() => import('./contactDetails'));
 
 const MyComponent = () => (
   <div>
-    <Suspense fallback={<div>Lazy loaded component is on it's way...</div>}>
+    <Suspense fallback={<div>Lazy loaded component is on it&apos;s way...</div>}>
       <ContactDetails />
     </Suspense>
   </div>
@@ -85,7 +85,7 @@ const FeedbackForm = lazy(() => import('./feedbackForm'));
 
 const MyComponent = () => (
   <div>
-    <Suspense fallback={<div>Lazy loaded component is on it's way...</div>}>
+    <Suspense fallback={<div>Lazy loaded component is on it&apos;s way...</div>}>
       <ContactDetails />
       <div>
         <div>What do you think about our app?</div>
@@ -206,11 +206,15 @@ simply use:
 
 ```javascript
 ReactDOM
-  .createRoot(document.getElementById('root'))
+  .unstable_createRoot(document.getElementById('root'))
   .render(<App />);
 ```
 
-This will allow to use new features, e.g. maxDuration prop of Suspense - it defines the time in ms after which our fallback component will show up. This will avoid screen flickering issue which usually occurs on faster network where the loader shows up for few ms and then the data comes immediately.
+This will allow to use new features, e.g.:
+
+* `maxDuration` prop of Suspense - it defines the time in ms after which our fallback component will show up. This will avoid screen flickering issue which usually occurs on faster network where the loader shows up for few ms and then the data comes immediately
+* `scheduleCallback` function - will defer the callback execution (e.g. setState) until all priority tasks are done
+* To see the demo, visit [talk of Andrew Clark and Brian Vaughn on Concurrent Rendering in React](https://www.youtube.com/watch?v=ByBPyMBTzM0)
 
 ### Important Changes In React With Concurrent Mode
 
@@ -243,8 +247,14 @@ Two new lifecycle methods will be added as a replacement:
 
 ### Articles And Documentation
 
-* [Code Splitting the React app - official documentation]([https://reactjs.org/docs/hooks-intro.html](https://reactjs.org/docs/code-splitting.html))
+* [Code Splitting the React app - official documentation](https://reactjs.org/docs/code-splitting.html)
 * [Marvin Frachet - React-cache, time slicing, and fetching with a synchronous API](https://medium.freecodecamp.org/react-cache-time-slicing-and-fetching-with-a-synchronous-api-2a57dc9c2e6d) => advanced reading on how is the concurrent mode implemented
+
+### Twitter accounts
+
+* [Dan Abramov](https://twitter.com/dan_abramov)
+* [Andrew Clark](https://twitter.com/acdlite)
+* [Brandon Dail](https://twitter.com/aweary)
 
 ## Next Time
 
