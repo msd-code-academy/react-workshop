@@ -1,0 +1,47 @@
+{
+  "name": "react-movies",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/chai-dom": "^0.0.7",
+    "@types/jest": "24.0.11",
+    "@types/node": "11.12.2",
+    "@types/react": "16.8.10",
+    "@types/react-dom": "16.8.3",
+    "@types/react-redux": "^7.0.6",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/sinon": "^7.0.11",
+    "@types/sinon-chai": "^3.2.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "typescript": "3.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-dom": "^1.8.1",
+    "react-testing-library": "^6.0.3",
+    "sinon": "^7.3.1",
+    "sinon-chai": "^3.3.0"
+  }
+}

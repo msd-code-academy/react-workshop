@@ -1,0 +1,19 @@
+.movie-list {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movie {
+  margin: 10px;
+}
+
+.movie__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.movie__image-container {
+  width: 500px;
+  height: 281px;
+}
