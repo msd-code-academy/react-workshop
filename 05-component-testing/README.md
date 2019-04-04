@@ -60,7 +60,7 @@ const { getByText, getByTestId } = render(<Fetch url={url} />)
 ### Fire Events
 
 ```
-fireEvent.click(getByText('Submit')
+fireEvent.click(getByText('Submit'))
 ```
 
 https://github.com/kentcdodds/dom-testing-library/blob/master/src/events.js

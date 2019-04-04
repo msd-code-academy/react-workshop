@@ -14,14 +14,7 @@ describe.skip('Playground', () => {
       <label id="username-label">Username</label>
       <input aria-labelledby="username-label" />
 
-      <section aria-labelledby="section-one-header">
-        <h3 id="section-one-header">Section One</h3>
-        <p>some content</p>
-      </section>
-
       <label>Username <input /></label>
-
-      <input aria-label="username" />
     </div>
   )
 
@@ -33,20 +26,7 @@ describe.skip('Playground', () => {
 
   const ByPlaceholderText = () => (
     <div>
-      <label htmlFor="username-input">Username</label>
-      <input id="username-input" />
-
-      <label id="username-label">Username</label>
-      <input aria-labelledby="username-label" />
-
-      <section aria-labelledby="section-one-header">
-        <h3 id="section-one-header">Section One</h3>
-        <p>some content</p>
-      </section>
-
-      <label>Username <input /></label>
-
-      <input aria-label="username" />
+      <input placeholder="Username" />
     </div>
   )
 
