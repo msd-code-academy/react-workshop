@@ -130,7 +130,7 @@ Again, enable SignIn route in `App/index.js`. Implement Sign In form `SignIn/ind
 
 ## Exercise 6 - Sign Out with React and Firebase
 
-To complete the authentication loop, implement the sign out component. In `SignOut/index.js` is needed to add logic to `onSignOut` handler. Use `doSignOut()` method for Singing Out and redirect landing page.
+To complete the authentication loop, implement the sign out component. In `SignOut/index.js` is needed to add logic to `onSignOut` handler. Use `doSignOut()` method for Singing Out and redirect to landing page.
 
 ## Exercise 7 - Session handling with Firebase/React
 
@@ -188,7 +188,7 @@ then(authUser => {
     .user(authUser.user.uid)
     .set({
       username,
-      email,
+      email
     })
   })
 
