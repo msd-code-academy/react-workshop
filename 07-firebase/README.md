@@ -93,13 +93,13 @@ Let's implement the authentication API for our Firebase class. Go to `src/compon
 - Reset a password for an authenticated user:
 
 ```
-  doPasswordReset = email => this.auth.sendPasswordResetEmail(email)
+  doPasswordReset = (email) => this.auth.sendPasswordResetEmail(email)
 ```
 
 - Change a password for an authenticated user
 
 ```
-  doPasswordUpdate = password => this.auth.currentUser.updatePassword(password)
+  doPasswordUpdate = (password) => this.auth.currentUser.updatePassword(password)
 ```
 
 [Manage Users in Firebase docs](https://firebase.google.com/docs/auth/web/manage-users)
@@ -130,7 +130,7 @@ Again, enable SignIn route in `App/index.js`. Implement Sign In form `SignIn/ind
 
 ## Exercise 6 - Sign Out with React and Firebase
 
-To complete the authentication loop, implement the sign out component. There is need to add logic to `onSignOut` handler. Use `doSignOut()` method for Singing Out.
+To complete the authentication loop, implement the sign out component. In `SignOut/index.js` is needed to add logic to `onSignOut` handler. Use `doSignOut()` method for Singing Out and redirect landing page.
 
 ## Exercise 7 - Session handling with Firebase/React
 
@@ -142,7 +142,7 @@ Export `App` wrapped to `withAuthentication` HOC which provides context with aut
 
 Like in all other forms before, enable route for Password Forget and Account pages in `App/index.js`.
 
-Implement `onSubmit` method in `PasswordForget/index.js`, use `doPasswordReset(email)` for password reset and then similarly `onSubmit` in `PasswordChange/index.js` using `.doPasswordUpdate(passwordOne)`.
+Implement `onSubmit` method in `PasswordForget/index.js`, use `doPasswordReset(email)` for password reset and then similarly `onSubmit` in `PasswordChange/index.js` using `doPasswordUpdate(passwordOne)`.
 
 ## Exercise 9 - Protected Routes in React with Authorization
 
