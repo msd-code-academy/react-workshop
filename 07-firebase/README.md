@@ -200,5 +200,5 @@ Finally, enable last Admin route in `App/index.js`.
 
 ## Sources
 
-- https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial#session-handling-with-firebasereact
+- https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial
 - https://soundcloud.com/czpodcast-1/cz-podcast-214-google-firestore-a-real-time-databaze
