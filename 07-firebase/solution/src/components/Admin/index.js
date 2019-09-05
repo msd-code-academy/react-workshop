@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card'
 import Typography from '@material-ui/core/Typography'
 
 import {withFirebase} from '../Firebase'
+import {withAuthorization} from '../Session'
 
 const styles = {
   root: {
@@ -79,7 +80,10 @@ const UserList = ({users, classes}) =>
     </Card>
   ))
 
+const condition = (authUser) => authUser !== null
+
 export default compose(
   withFirebase,
+  withAuthorization(condition),
   withStyles(styles)
 )(AdminPage)
