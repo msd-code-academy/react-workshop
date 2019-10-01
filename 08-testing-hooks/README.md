@@ -6,7 +6,7 @@ To follow exercises on your own laptop, please clone and install dependencies:
 
 ```
 git clone https://github.com/msd-code-academy/react-workshop.git
-cd react-workshop/07-firebase/excersise/
+cd react-workshop/08-testing-hooks/
 yarn
 yarn start
 ```
