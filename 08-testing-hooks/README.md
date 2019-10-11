@@ -11,11 +11,11 @@ yarn
 yarn start
 ```
 
-> Following is a list of TODO items, not course content yet:
-
 ## 00 introduction
 
-- link to React Hooks, useState example
+- https://reactjs.org/docs/hooks-intro.html
+
+> Following is a list of TODO items, not course content yet:
 
 ## 01 testing useState (exercise)
 
