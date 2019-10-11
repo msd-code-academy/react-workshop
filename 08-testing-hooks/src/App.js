@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
 
 const prefixes = Array.from(Array(8)).map((_, i) => `0${i + 1}`)
 const links = prefixes.map((i) =>
