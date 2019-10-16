@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 import { act } from "react-dom/test-utils"
-import Main from './01-solution'
+import Main from './02-solution'
 
 let div
 beforeEach(() => {
@@ -18,7 +18,7 @@ test('default color', () => {
     render(<Main />, div)
   })
   expect(div.querySelector('.Main-box').style.backgroundColor).toBe('orange')
-})
+});
 
 test('modified color', () => {
   act(() => {
@@ -34,4 +34,4 @@ test('modified color', () => {
   })
   expect(input).toHaveProperty('value', 'green')
   expect(div.querySelector('.Main-box').style.backgroundColor).toBe('green')
-})
+});
