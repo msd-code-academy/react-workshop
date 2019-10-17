@@ -20,7 +20,7 @@ yarn test
 
 - https://reactjs.org/docs/thinking-in-react.html
 - https://reactjs.org/docs/hooks-intro.html
-- https://reactjs.org/docs/testing-recipes.html#events
+- https://reactjs.org/docs/testing-recipes.html
 
 Questions possible at any time.
 

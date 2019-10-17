@@ -10,7 +10,7 @@ const Main = () => {
 
   return (
     <div className="Main">
-      <h3>Adding State</h3>
+      <h3>Libraries for testing</h3>
       <input placeholder={defaultColor} value={color} onChange={handleChange} />
       <div className="Main-box" style={{ backgroundColor: color || defaultColor }} />
     </div>

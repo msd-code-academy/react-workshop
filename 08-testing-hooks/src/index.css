@@ -68,4 +68,5 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 200ms;
 }
