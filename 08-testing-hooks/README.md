@@ -64,10 +64,18 @@ Simplify tests with react-testing-library:
 - replace modification of input value
 
 
-## 05 react-redux
+## 05 mock API data and timers
 > [src/05](src/05)
 
-- existing actions, reducer, ... and simple tests for them
-- add useDispatch, useSelector to component
-- mock the selectors, use dummy dispatch and connect
+Use standard Jest mocking features:
+- mock response from window.fetch
+- mock setTimeout
 
+
+## 06 react-redux
+> [src2/06](src2/06)
+
+[You Might Not Need Redux](https://www.google.com/search?q=you+might+not+need+redux), but if it's already used in the project
+and you want to test a component:
+- mock `useSelector`, `useDispacth` and `connect`
+- or [redux-mock-store](https://github.com/dmitry-zaets/redux-mock-store) (out of scope for today)
