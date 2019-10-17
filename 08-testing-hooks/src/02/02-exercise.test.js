@@ -1,9 +1,24 @@
 import React from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 import { act } from "react-dom/test-utils"
-import Main from './02-exercise'
+import Main, { validateColor } from './02-exercise'
 
-describe('component', () => {
+describe('validateColor', () => {
+  test('some colors', () => {
+    expect(validateColor('')).toBeFalsy()
+    expect(validateColor('orang')).toBeFalsy()
+    // expect(validateColor('orange')).toBeTruthy()
+  })
+})
+
+// input.value = "green" does not work in React 16, see https://stackoverflow.com/a/46012210/1176601
+const inputValueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set;
+const modify = (input, value) => {
+  inputValueSetter.call(input, value);
+  input.dispatchEvent(new Event('input', { bubbles: true }))
+}
+
+describe('Main', () => {
   let div
   beforeEach(() => {
     div = document.createElement('div')
@@ -15,25 +30,23 @@ describe('component', () => {
   })
 
   test('default color', () => {
-    act(() => {
-      render(<Main />, div)
-    })
-    expect(div.querySelector('.Main-box').style.backgroundColor).toBe('orange')
+    act(() => { render(<Main />, div) })
+
+    const box = div.querySelector('.Main-box')
+    expect(box.style.backgroundColor).toBe('orange')
+    // expect(box.textContent).toBe('orange')
   });
 
   test('modified color', () => {
-    act(() => {
-      render(<Main />, div)
-    })
+    act(() => { render(<Main />, div) })
+
     const input = div.querySelector('input')
+    const box = div.querySelector('.Main-box')
     expect(input).toHaveProperty('value', '')
-    act(() => {
-      // input.value = "green" does not work in React 16, see https://stackoverflow.com/a/46012210/1176601
-      const inputValueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set;
-      inputValueSetter.call(input, 'green');
-      input.dispatchEvent(new Event('input', { bubbles: true }))
-    })
+
+    act(() => { modify(input, 'green') })
+
     expect(input).toHaveProperty('value', 'green')
-    expect(div.querySelector('.Main-box').style.backgroundColor).toBe('green')
+    expect(box.style.backgroundColor).toBe('green')
   })
 })

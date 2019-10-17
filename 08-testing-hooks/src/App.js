@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const prefixes = Array.from(Array(8)).map((_, i) => `0${i + 1}`)
+const prefixes = Array.from(Array(2)).map((_, i) => `0${i + 1}`)
 const links = prefixes.map((i) =>
   <li key={i}>
     {i}: <a href={`#${i}-exercise`} id={`${i}-exercise`}>exercise</a>
@@ -9,7 +9,7 @@ const links = prefixes.map((i) =>
 )
 
 const components = {}
-prefixes.filter((i) => i <= '01').forEach((i) => {
+prefixes.forEach((i) => {
   import(`./${i}/${i}-exercise`).then((imported) => {
     components[`${i}-exercise`] = imported.default
   })

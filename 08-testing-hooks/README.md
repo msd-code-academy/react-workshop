@@ -22,6 +22,9 @@ yarn test
 - https://reactjs.org/docs/hooks-intro.html
 - https://reactjs.org/docs/testing-recipes.html#events
 
+Questions possible at any time.
+
+
 ## 01 testing useState
 > [src/01](src/01)
 
@@ -34,44 +37,28 @@ Starting with a stateless component with a test:
 > [src/02](src/02)
 
 Starting with the above solution and boilerplate code, display the last valid color name:
-- add validation test
-- implement validation
-- update component tests
-- update component
+- add validation test + update component tests
+- implement validation + update component
 
-## 03 low priority for unit-testing effects
+
+## 03 custom hooks
 > [src/03](src/03)
-
-- code+test without state or effect
-- add effect that modifies state after fetching data
-- test 2 states (initial render, with data) without unit-testing the effect itself
-
-## 04 custom hooks
-> [src/04](src/04)
 
 - code of component with lots of logic + test for just initial render
 - move to a new custom hook
 - add test for the hook, using dummy component
 
-## 05 testing libraries
-> [src/05](src/05)
+
+## 04 testing libraries
+> [src/04](src/04)
 
 - links to useful libraries (disclaimer whether or not I had time to try them)
 
-## 06 react-redux
-> [src/06](src/06)
+
+## 05 react-redux
+> [src/05](src/05)
 
 - existing actions, reducer, ... and simple tests for them
 - add useDispatch, useSelector to component
 - mock the selectors, use dummy dispatch and connect
 
-## 07 add a feature using redux
-> [src/07](src/07)
-
-- working solution from 06
-- add new JSON property to data
-- update redux code
-- update component
-- extra challenge: TDD
-
-Q&A possible at any time.
