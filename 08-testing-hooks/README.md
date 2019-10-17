@@ -11,52 +11,71 @@ yarn
 yarn start
 ```
 
-> Following is a list of TODO items, not course content yet:
+And in a separate terminal window:
+```
+yarn test
+```
 
 ## 00 introduction
 
-- link to React Hooks, useState example
+- https://reactjs.org/docs/thinking-in-react.html
+- https://reactjs.org/docs/hooks-intro.html
+- https://reactjs.org/docs/testing-recipes.html
 
-## 01 testing useState (exercise)
+Questions possible at any time.
 
-- code+test without useState
-- add state to component
-- add test
 
-## 02 low priority for unit-testing effects (demo)
+## 01 testing useState
+> [src/01](src/01)
 
-- code+test without state or effect
-- add effect that modifies state after fetching data
-- test 2 states (initial render, with data) without unit-testing the effect itself
+Starting with a stateless component with a test:
+- add state to component - render background color based on the input value
+- update test
 
-## 03 TDD (exercise)
 
-- code+test without state, dummy event handler
-- add test of the event
-- implement event handler
+## 02 TDD
+> [src/02](src/02)
 
-## 04 custom hooks (demo)
-
-- code of component with lots of logic + test for just initial render
-- move to a new custom hook
-- add test for the hook, using dummy component
-
-## 05 testing libraries (overview)
-
-- links to useful libraries (disclaimer whether or not I had time to try them)
-
-## 06 react-redux (demo)
-
-- existing actions, reducer, ... and simple tests for them
-- add useDispatch, useSelector to component
-- mock the selectors, use dummy dispatch and connect
-
-## 07 add a feature using redux (exercise or homework)
-
-- working solution from 06
-- add new JSON property to data
-- update redux code
+Display the last valid color name:
+- add validation test
+- implement validation
+- update component tests
 - update component
-- extra challenge: TDD
 
-Q&A possible at any time.
+
+## 03 custom hooks
+> [src/03](src/03)
+
+Move the color logic to a reusable custom hook:
+- e.g. following API: `{rawColor, validColor, setColor} = useColor(defaultColor)`
+- refactor component (no need to update tests at this stage!)
+- add tests for the custom hook
+- use the hook multiple times
+
+
+## 04 libraries for testing
+- https://testing-library.com/docs/react-testing-library/intro
+- https://airbnb.io/enzyme/
+
+> [src/04](src/04)
+
+Simplify tests with react-testing-library:
+- replace `act()`
+- replace modification of input value
+
+
+## 05 mock API data and timers
+> [src/05](src/05)
+
+Use standard Jest mocking features:
+- mock response from window.fetch
+- mock setTimeout
+
+
+## 06 react-redux
+> [src2/06](src2/06)
+
+[You Might Not Need Redux](https://www.google.com/search?q=you+might+not+need+redux), but if it's already used in the project
+and you want to test a component:
+- mock `useSelector`, `useDispacth` and `connect`
+- or [redux-mock-store](https://github.com/dmitry-zaets/redux-mock-store) (out of scope for today)
