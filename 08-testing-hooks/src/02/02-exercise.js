@@ -6,7 +6,7 @@ const Main = () => {
   const defaultColor = 'orange'
 
   const [inputColor, setInputColor] = useState('')
-  const handleHange = (event) => {
+  const handleChange = (event) => {
     const { value } = event.target
     setInputColor(value)
     if (validateColor(value)) {
@@ -16,8 +16,8 @@ const Main = () => {
 
   return (
     <div className="Main">
-      <h3>Adding State</h3>
-      <input placeholder={defaultColor} value={inputColor} onChange={handleHange} />
+      <h3>TDD</h3>
+      <input placeholder={defaultColor} value={inputColor} onChange={handleChange} />
       <div className="Main-box" style={{ backgroundColor: inputColor || defaultColor }}>
         {'orange '}
       </div>

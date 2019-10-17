@@ -36,23 +36,32 @@ Starting with a stateless component with a test:
 ## 02 TDD
 > [src/02](src/02)
 
-Starting with the above solution and boilerplate code, display the last valid color name:
-- add validation test + update component tests
-- implement validation + update component
+Display the last valid color name:
+- add validation test
+- implement validation
+- update component tests
+- update component
 
 
 ## 03 custom hooks
 > [src/03](src/03)
 
-- code of component with lots of logic + test for just initial render
-- move to a new custom hook
-- add test for the hook, using dummy component
+Move the color logic to a reusable custom hook:
+- e.g. following API: `{rawColor, validColor, setColor} = useColor(defaultColor)`
+- refactor component (no need to update tests at this stage!)
+- add tests for the custom hook
+- use the hook multiple times
 
 
-## 04 testing libraries
+## 04 libraries for testing
+- https://testing-library.com/docs/react-testing-library/intro
+- https://airbnb.io/enzyme/
+
 > [src/04](src/04)
 
-- links to useful libraries (disclaimer whether or not I had time to try them)
+Simplify tests to react-testing-library:
+- replace `act()`
+- replace `modify()`
 
 
 ## 05 react-redux
