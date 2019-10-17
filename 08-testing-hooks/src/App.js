@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const prefixes = Array.from(Array(3)).map((_, i) => `0${i + 1}`)
+const prefixes = Array.from(Array(4)).map((_, i) => `0${i + 1}`)
 const links = prefixes.map((i) =>
   <li key={i}>
     {i}: <a href={`#${i}-exercise`} id={`${i}-exercise`}>exercise</a>

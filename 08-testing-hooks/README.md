@@ -59,9 +59,9 @@ Move the color logic to a reusable custom hook:
 
 > [src/04](src/04)
 
-Simplify tests to react-testing-library:
+Simplify tests with react-testing-library:
 - replace `act()`
-- replace `modify()`
+- replace modification of input value
 
 
 ## 05 react-redux
