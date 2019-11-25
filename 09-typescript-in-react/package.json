@@ -5,10 +5,10 @@
   "dependencies": {
     "@types/jest": "24.0.23",
     "@types/node": "12.12.11",
-    "@types/react": "16.9.11",
     "@types/react-dom": "16.9.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "typescript": "3.7.2"
   },
@@ -17,9 +17,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -32,5 +29,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.11",
+    "@types/react-router-dom": "^5.1.2",
+    "prettier": "^1.19.0"
   }
 }

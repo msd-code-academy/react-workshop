@@ -160,8 +160,6 @@ class Customer {
 Person someone = new Customer();
 ```
 
-### Generic Types
-
 ### Typing the Functions
 
 Even though TypeScript is good at inferring the return type of our function, it is a best practice
@@ -224,6 +222,93 @@ function sayMyName(name: string = 'Fantomas'): void {
 
 There is no need to use question marks for parameters with default values.
 
+### Generics
+
+Thanks to generics, it is possible to create functions and classes that works with a variety of types. For example instead
+of having:
+
+```TypeScript
+function doSomethingWithString(str: string): string {
+  return str;
+}
+
+function doSomethingWithNumber(num: number): number {
+  return num;
+}
+```
+
+we use generic type and define the `doSomething` method like this:
+
+```TypeScript
+function doSomething<T>(val: T): T {
+  return val;
+}
+```
+
+Then we can call the function either with type in brackets as parameter:
+
+```TypeScript
+const result = doSomething<string>('Hello');
+```
+
+Or we can even rely on TypeScript that it will infer the type from the type of parameter and simply call:
+
+```TypeScript
+const result = doSomething('Hello');
+```
+
+Variable `result` will be a string, because the argument we pass in is a string.
+
+### Useful Utility types
+
+Utility types are generic types that we can use out of the box and that transforms given type somehow.
+
+#### Partial
+
+```TypeScript
+type Car = {
+  color: string;
+  maxSpeed: number;
+};
+
+type PartialCar = Partial<Car>;
+// type PartialCar = {
+//   color?: string;
+//   maxSpeed?: number;
+// };
+```
+
+#### Pick
+
+```TypeScript
+type Car = {
+  color: string;
+  maxSpeed: number;
+};
+
+type PickCar = Pick<Car, 'color'>;
+// type PickCar = {
+//   color: string;
+// };
+```
+
+#### Omit
+
+```TypeScript
+type Car = {
+  color: string;
+  maxSpeed: number;
+};
+
+type OmitCar = Omit<Car, 'color'>;
+// type OmitCar = {
+//   maxSpeed: number;
+// };
+```
+
+More utility types can be found [here](https://www.typescriptlang.org/docs/handbook/utility-types.html).
+
+
 ### Usage in React
 
 To create a new React application with TypeScript it is as easy as executing:
@@ -232,6 +317,10 @@ To create a new React application with TypeScript it is as easy as executing:
 # Prerequisite: node version ^8.10.0 || ^10.13.0 || >=11.10.1
 npx create-react-app app_name --typescript
 ```
+
+#### Functional Component
+
+
 
 #### Callbacks and Event Handlers
 
@@ -246,6 +335,8 @@ You still need to test the logic of your code! You just don't have to test for e
 how to handle it (e.g. that you expect string in the code and get undefined, etc.)
 
 ## Linting
+
+There are currently two main linters for TypeScript: `tslint` and `eslint`.
 
 Even though the `tslint` is still supported, it is [about to be deprecated](https://github.com/palantir/tslint/issues/4534), use `eslint` instead.
 
