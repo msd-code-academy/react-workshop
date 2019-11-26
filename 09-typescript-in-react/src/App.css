@@ -74,3 +74,35 @@ nav li a:hover {
   text-align: left;
   margin: 20px;
 }
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.joke {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.joke > *{
+  margin: 10px;
+}
+
+.joke-list-form {
+  display: flex;
+  justify-content: center;
+}
+
+.joke-list-form > input {
+  text-align: center;
+  font-size: 20px;
+}
