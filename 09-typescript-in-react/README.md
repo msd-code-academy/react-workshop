@@ -1,9 +1,48 @@
 # TypeScript in React
 
+## Prerequisites
+
+Please go to [https://github.com/msd-code-academy](https://github.com/msd-code-academy)
+and clone the project. Then inside the project run:
+
+```bash
+git pull
+cd 09-typescript-in-react
+npm ci
+npm start
+```
+
+Development servers should open on port `3000`.
+
 ## TypeScript
 
-* Programming language developed by Microsoft
-* Superset of JavaScript (compiles to JS) - [check the TS playground](http://www.typescriptlang.org/play/)
+## What is TypeScript
+
+* Open source programming language developed and maintained by Microsoft
+* Superset of JavaScript: TS compiles to JS - [try yourself on TS playground](http://www.typescriptlang.org/play/)
+* Aligned with ECMAScript for compatibility - what's available in JS is available in TS
+
+## Why TypeScript
+
+* find problems before running the code - speed up the development and avoid surprising run time bugs
+* better developer experience thanks to the intellisense
+* easier maintainability and extendability in large code base (any change is visible throughout the whole project)
+* better readability
+* no need to use `propTypes`
+* allows additional features like e.g. function overloading that are not possible in JS
+
+Even though there is some learning curve and at the beginning TS will slow you down,
+it is beneficial in the long term, especially with big and complex code base.
+
+## What TypeScript isn't
+
+* replacement of tests - sometimes there are opinions that thanks to typescript we don't need to write (unit) tests
+anymore - that's not true. We still need to test the logic of our code!
+* different programming language - TS is still JavaScript under the hood, it would be mistake to think that's it's
+a separate programming language like Java or C#
+* always easy - TS can be sometimes confusing and especially error messages can be very hard to read
+![typescript_is_sometimes_tricky](./public/IMG_5437.jpg)
+
 
 ### Basic Types
 
@@ -41,7 +80,7 @@ enum Color {
 const myColor: Color = Color.Green;
 ```
 
-NOTE: Be careful with enum - the values will be changed to numbers in the runtime!
+*NOTE: Be careful with enum - the values will be changed to numbers in the runtime!*
 
 ```TypeScript
 const myColor: Color = Color.Green;
@@ -68,8 +107,8 @@ function logMessage(message: string): void {
 
 #### Never
 
-`never` is a special type that indicates that the value 'never occurs'. For example here we say by `never` that function
-never returns anything and that the end of the function is not reachable:
+`never` is a special type that indicates that the value 'never occurs'. For example here we say
+by `never` that function never returns anything and that the end of the function is not reachable.
 
 ```TypeScript
 function error(message: string): never {
@@ -81,7 +120,7 @@ function error(message: string): never {
 
 #### Arrays
 
-There are two ways to annotate list types while there is no real difference between them:
+There are two ways to annotate list types. There is no real difference between them:
 
 ```TypeScript
 const firstArray: number[] = [];
@@ -96,13 +135,12 @@ const position: [number, number] = [0, 10];
 
 #### Object
 
-object is a type that represents any non-primitive type. It is not recommended to use, it's better to define shape of an
-object using `type` or `interface` (see below) instead.
+`object` is a type that represents any non-primitive type. It is not recommended to use, it's
+better to define shape of an object using `type` or `interface` (see below) instead.
 
 ### Interfaces and Types
 
-NOTE: Whenever we define our own type, it should start with a capital letter. For variable names, we use snake case => that way
-we can easily see what is a variable and what is a type:
+#### Type
 
 ```TypeScript
 type Beverage = {
@@ -118,8 +156,12 @@ const beverage: Beverage = {
 drink(beverage);
 ```
 
-We can also achieve the same by using `interface` instead of `type`. Nowadays interfaces and types are very similar and there
-are only small differences between them. In general, it is more frequent to use types in React.
+NOTE: Whenever we define our own type, it should start with a capital letter. For variable names
+we use snake case => that way we can easily distinguish between variable and type.
+
+#### Interface
+
+We can also achieve the same by using `interface` instead of `type`.
 
 ```TypeScript
 interface Beverage { //<= There is no '=' sign!
@@ -135,13 +177,49 @@ const beverage: Beverage = {
 drink(beverage);
 ```
 
+Nowadays interfaces and types are very similar and there are only small differences between them.
+The most noticeable differences:
+
+* we can use `extends` for interface, but not for type (though we can achieve the same behavior
+using unions or intersections)
+
+```TypeScript
+interface a {
+  name: string;
+}
+
+interface b extends a {
+  id: number;
+}
+```
+
+* we can assign a primitive type to our own type alias, that is not possible in interface
+
+```TypeScript
+type MyType = number;
+```
+
+* duplicate declaration for interfaces is valid (both are merged), while for type aliases it throws an error
+
+```TypeScript
+interface Point { x: number; }
+interface Point { y: number; }
+
+const point: Point = { x: 1, y: 2 };
+
+type TypePoint = { x: number; }
+type TypePoint = { y: number; } //<= will throw a compilation error
+```
+
+In general, it is more frequent to use type aliases in React.
+
 ### Unions and Intersections
 
 One variable can sometimes be defined by combination of other types.
 
-#### Type Union
+#### Union
 
-We use union (`|`) to express that a variable is of type A "OR" a type B.
+We use union (`|`) to express that a variable is of a type A "OR" a type B.
 
 ```TypeScript
 type StringOrNumber = string | number;
@@ -177,11 +255,11 @@ type StudentOrPerson = Student | Person;
 Unions are very frequent. On the other hand, intersection is in practice used rarely, but it's good to understand
 the difference.
 
-#### Type Intersection
+#### Intersection
 
 We use intersection (`&`) to express that a variable is of a type A "AND" a type B.
 
-For primitive types it doesn't make much sense to use.
+For primitive types it doesn't make too much sense.
 
 ```TypeScript
 type StringAndNumber = string & number;
@@ -212,7 +290,7 @@ type StudentOrPerson = Student | Person;
 
 ### Nominal vs Structural type systems
 
-TypeScript is a Structural type system - unlike Nominal systems, it cares only about structure of types. This code is
+TypeScript is a 'structural type system' - unlike 'nominal systems', it cares only about structure of types. This code is
 perfectly valid in TypeScript, but it would throw an error in Nominal type systems, like Java:
 
 ```TypeScript
@@ -229,7 +307,7 @@ Person someone = new Customer();
 
 ### Typing the Functions
 
-Even though TypeScript is good at inferring the return type of our function, it is a best practice
+Even though TypeScript is good at inferring the return type of our function, it is a good practice
 to always state the return type explicitly:
 
 ```TypeScript
@@ -244,8 +322,8 @@ function repeat(text: string, repeat: number): string => {
 }
 ```
 
-Function that doesn't return anything should have the `void` or `never` return type. We can for instance type function
-that takes a callback like this:
+Function that doesn't return anything should have the `void` or `never` return type. We can for
+instance type function that takes a callback as parameter like this:
 
 ```TypeScript
 function handleCallback(callBack: (e: Event) => void): void {
@@ -265,7 +343,7 @@ function handleCallback(callBack: CallBack): void {
 
 #### Optional Parameters
 
-Use question mark to annotate optional parameters.
+We use question mark to annotate optional parameters.
 
 ```TypeScript
 function handleCallback(callBack?: CallBack): void {
@@ -288,7 +366,7 @@ type Data = {
 };
 
 const fetchData = async(query: string): Promise<Data[]> => { //<= Promise that will resolve to array of Data objects
-  const result = await fetch(`https://api.domain.com/search?query=${query}`);
+  const result = await fetch(`https://api.domain.com/data?query=${query}`);
   const resultJSON = await result.json();
   return resultJSON.result || [];
 }
@@ -308,7 +386,7 @@ There is no need to use question marks for parameters with default values.
 
 ### Generics
 
-Thanks to generics, it is possible to create functions and classes that works with a variety of types. For example instead
+Thanks to generics, it is possible to create functions and classes that work with a variety of types. For example instead
 of having:
 
 ```TypeScript
@@ -343,7 +421,7 @@ const result = doSomething('Hello');
 
 Variable `result` will be a string in both cases.
 
-We can define type of function with generics e.g. like this:
+We can define type alias for function with generics e.g. like this:
 
 ```TypeScript
 type MyGenericFunction = <T>(arg: T) => T;
@@ -359,13 +437,13 @@ class GenericClass<T> {
     this.myValue = myValue;
   }
 
-  public getMyValue(): T {
+  public getValue(): T {
     return this.myValue;
   };
 }
 
-const MyValue = new GenericClass<number>(4);
-const result = MyValue.getMyValue();
+const MyClass = new GenericClass<number>(4);
+const result = MyClass.getValue();
 // type of result is number
 ```
 
@@ -420,7 +498,7 @@ More utility types can be found [here](https://www.typescriptlang.org/docs/handb
 
 ### Usage in React
 
-To create a new React application with TypeScript it is as easy as executing:
+To create a new React application with TypeScript run:
 
 ```BASH
 # Prerequisite: node version ^8.10.0 || ^10.13.0 || >=11.10.1
@@ -435,7 +513,7 @@ npm install @types/react --save-dev
 ```
 
 If you have issues that some package doesn't have types, try to install the types from DefinitelyTyped, usually they
-are available there.
+are there.
 
 ```bash
 npm install @types/<package name> --save-dev
@@ -443,7 +521,7 @@ npm install @types/<package name> --save-dev
 
 #### Functional Component
 
-To type functional component, we can use the generic `React.FC` (or `React.FunctionComponent`) type from React:
+To use types with functional component, we can import the generic `React.FC` (or `React.FunctionComponent`) type from React:
 
 ```TypeScript
 type MyProps = {
@@ -478,7 +556,7 @@ See the [second exercise](./src/exercise-2/jokes.jsx)
 
 ##### UseState
 
-Type inference works very well for this hook - type is defined by type of the given (default) value:
+Type inference works very well for this hook - defined by the type of the given (default) value:
 
 ```TypeScript
 const [isOpen, setIsOpen] = React.useState(false);
@@ -501,7 +579,7 @@ const [student, setStudent] = React.useState<Student | null>(null);
 
 ##### UseEffect
 
-Typing the `useEffect` is very easy, we should only take care not to return anything other than a function or undefined:
+Typing the `useEffect` is very easy, we should only take care not to return anything other than a `function` or `undefined`:
 
 ```TypeScript
 React.useEffect(
@@ -539,19 +617,11 @@ function TextInputWithFocusButton() {
 
 ##### UseContext
 
-`useContext` can infer its types based on the context object that is passed in as an argument
-
 [See the code](./src/use-context/use-context.tsx)
 
 #### UseReducer
 
 [See the code](./src/use-reducer/use-reducer.tsx)
-
-### TypeScript = No Tests ?
-
-Sometimes there are opinions that thanks to typescript we don't need to write (unit) tests anymore - that's not true.
-We still need to test the logic of our code! We just don't have to test for example for unexpected variable type and
-how to handle it (e.g. that we expect string in the code and get undefined, etc.)
 
 ## Linting
 
