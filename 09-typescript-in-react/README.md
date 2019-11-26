@@ -41,7 +41,7 @@ anymore - that's not true. We still need to test the logic of our code!
 * different programming language - TS is still JavaScript under the hood, it would be mistake to think that's it's
 a separate programming language like Java or C#
 * always easy - TS can be sometimes confusing and especially error messages can be very hard to read
-![typescript_is_sometimes_tricky](./public/IMG_5437.jpg)
+<img src="public/IMG_5437.jpg" width="100%" />
 
 
 ### Basic Types
