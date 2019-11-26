@@ -635,5 +635,5 @@ separate tslint package in order to have unified developer experience across Jav
 
 ## Sources and Useful Links
 
-[TS official documentation](http://www.typescriptlang.org/docs/home.html)
-[TS and React cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet)
+* [TS official documentation](http://www.typescriptlang.org/docs/home.html)
+* [TS and React cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet)
