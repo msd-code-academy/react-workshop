@@ -215,7 +215,7 @@ In general, it is more frequent to use type aliases in React.
 
 ### Unions and Intersections
 
-One variable can sometimes be defined by combination of other types.
+A type can be defined by combination of other types.
 
 #### Union
 
@@ -280,7 +280,7 @@ type Student = {
   id: number;  // <=
 };
 
-type StudentOrPerson = Student | Person;
+type StudentOrPerson = Student & Person;
 // Result:
 // {
 //   name: string;
@@ -299,10 +299,10 @@ class Person {
 }
 
 class Customer {
-  name string
+  name: string
 }
 
-Person someone = new Customer();
+const someone: Person = new Customer();
 ```
 
 ### Typing the Functions
@@ -317,7 +317,7 @@ const repeat = (text: string, repeat: number): string => {
 }
 
 // Equivalent standard function
-function repeat(text: string, repeat: number): string => {
+function repeat(text: string, repeat: number): string {
   //...
 }
 ```
@@ -592,6 +592,8 @@ React.useEffect(
   []
 );
 ```
+
+See the [third exercise](./src/exercise-3/clock.jsx)
 
 ##### UseRef
 
