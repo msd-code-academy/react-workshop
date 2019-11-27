@@ -80,6 +80,8 @@ enum Color {
 const myColor: Color = Color.Green;
 ```
 
+See the [transpiled code in playground](https://www.typescriptlang.org/play/index.html?ssl=5&ssc=2&pln=1&pc=1#code/KYOwrgtgBAwg9gGzgJygbwFBSgJWAEwBosoBxZYUY7AIQTGAwF8g).
+
 *NOTE: Be careful with enum - the values will be changed to numbers in the runtime!*
 
 ```TypeScript
@@ -87,9 +89,26 @@ const myColor: Color = Color.Green;
 console.log(myColor); // prints out 0
 ```
 
+If we need the values, it is possible to assign them:
+
+```TypeScript
+enum Color {
+  Red = 'red',
+  Green = 'green',
+  Blue = 'blue'
+}
+
+const myColor: Color = Color.Green;
+console.log(myColor); // prints out 'green'
+```
+
 #### Any
 
 Magic type - by `any` we express that the variable can have any type - no constraints are applied.
+
+This type is not desirable - we could put `any` everywhere, but then we would negate benefits of TS.
+
+TIP: use strict mode (`"strict": true` in `tsconfig.json`) to prevent usage of `any`.
 
 #### Null, Undefined
 

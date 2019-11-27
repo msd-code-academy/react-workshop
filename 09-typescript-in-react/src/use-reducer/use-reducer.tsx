@@ -1,8 +1,8 @@
 import React, {useReducer} from 'react';
 
 enum Language {
-  CZ,
-  EN
+  CZ = 'czech',
+  EN = 'english'
 }
 
 type AppState = {
