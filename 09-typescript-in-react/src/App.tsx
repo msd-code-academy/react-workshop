@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
+import HomePage from './homepage';
 import ExerciseOne from './exercise-1';
 import ExerciseTwo from './exercise-2';
 import ExerciseThree from './exercise-3';
@@ -25,7 +26,7 @@ const App: React.FC = () => (
       </nav>
       <div className="App-content">
         <Switch>
-          <Route path="/" exact component={() => <h1>Home Page</h1>} />
+          <Route path="/" exact component={HomePage} />
           <Route path="/exercise-one" component={ExerciseOne} />
           <Route path="/exercise-two" component={ExerciseTwo} />
           <Route path="/exercise-three" component={ExerciseThree} />

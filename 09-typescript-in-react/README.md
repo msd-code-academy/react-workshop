@@ -12,7 +12,7 @@ npm ci
 npm start
 ```
 
-Development servers should open on port `3000`.
+Development server should open on port `3000`.
 
 ## TypeScript
 
@@ -42,7 +42,6 @@ anymore - that's not true. We still need to test the logic of our code!
 a separate programming language like Java or C#
 * always easy - TS can be sometimes confusing and especially error messages can be very hard to read
 <img src="public/IMG_5437.JPG" width="100%" />
-
 
 ### Basic Types
 
@@ -286,7 +285,7 @@ type StringAndNumber = string & number;
 // StringAndNumber is of the type 'never'
 ```
 
-For non-primitive types it means: **common properties are of the type that corresponding properties have in common**
+For non-primitive types it means: types are merged and **common properties will have the type that both properties have in common**
 
 ```TypeScript
 type Person = {
@@ -297,13 +296,15 @@ type Person = {
 type Student = {
   name: string;
   id: number;  // <=
+  grade: number;
 };
 
-type StudentOrPerson = Student & Person;
+type StudentAndPerson = Student & Person;
 // Result:
 // {
 //   name: string;
 //   id: number;  // <=
+//   grade: number;
 // };
 ```
 
@@ -341,21 +342,10 @@ function repeat(text: string, repeat: number): string {
 }
 ```
 
-Function that doesn't return anything should have the `void` or `never` return type. We can for
-instance type function that takes a callback as parameter like this:
+Function that doesn't return anything should have the `void` or `never` return type:
 
 ```TypeScript
-function handleCallback(callBack: (e: Event) => void): void {
-  //...
-};
-```
-
-For readability, we can extract the callback type:
-
-```TypeScript
-type CallBack = (e: Event) => void;
-
-function handleCallback(callBack: CallBack): void {
+function doSomething(): void {
   //...
 };
 ```
