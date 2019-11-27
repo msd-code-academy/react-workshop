@@ -3,30 +3,28 @@ import PropTypes from 'prop-types';
 
 // Exercise:
 // * Change extension of this file to .jsx and restart the development server
-// * Define suitable "BlogPost" type that will hold information about id, title and text
+// * Define "BlogPost" type that will hold information about id, title and text
 // * Use the BlogPost type for myArticles variable
 // * Use proper types for Article component props (hint: you can use Omit<BlogPost, 'id'> type)
 // * Use proper types for Blog component props
 // * Get rid of PropTypes package, but keep the functionality (default props for Article)
-//
-// WARNING: there is a bug that will emerge with using a proper typing, find it and fix it.
 
 // Article component
 const Article = (props) => (
   <>
-    <h2>{props.header}</h2>
-    <div>{props.body}</div>
+    <h2>{props.title}</h2>
+    <div>{props.text}</div>
   </>
 );
 
 Article.propTypes = {
-  header: PropTypes.string,
-  body: PropTypes.string
+  title: PropTypes.string,
+  text: PropTypes.string
 };
 
 Article.defaultProps = {
-  header: '',
-  body: ''
+  title: '',
+  text: ''
 };
 
 // Blog component that displays multiple articles
