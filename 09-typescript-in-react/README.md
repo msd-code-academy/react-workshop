@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Please go to [https://github.com/msd-code-academy](https://github.com/msd-code-academy)
+Please go to [https://github.com/msd-code-academy/react-workshop](https://github.com/msd-code-academy/react-workshop)
 and clone the project. Then inside the project run:
 
 ```bash
