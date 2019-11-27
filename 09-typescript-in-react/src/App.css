@@ -93,8 +93,9 @@ nav li a:hover {
   align-items: center;
 }
 
-.joke > *{
+.joke > * {
   margin: 10px;
+  text-align: left;
 }
 
 .joke-list-form {
