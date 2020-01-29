@@ -1,0 +1,35 @@
+{
+  "name": "suspense-workshop",
+  "version": "1.0.0",
+  "repository": "git@github.com:renekopcem/suspense-workshop.git",
+  "author": "Roman Klos <roman.klos@kopcem.net>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.14.0",
+    "@typescript-eslint/parser": "^2.14.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "react": "0.0.0-experimental-b53ea6ca0",
+    "react-dom": "0.0.0-experimental-b53ea6ca0"
+  },
+  "scripts": {
+    "start": "parcel --no-hmr public/index.html"
+  },
+  "browserslist": [
+    "last 1 Chrome versions"
+  ]
+}

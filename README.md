@@ -18,4 +18,5 @@ Please run `npm audit` before using any of our examples at a later date (the 3rd
 - 07 (2019-09-05) [React and Firebase](07-firebase)
 - 08 (2019-10-17) [Testing Hooks](08-testing-hooks)
 - 09 (2019-11-26) [TypeScript in React](09-typescript-in-react)
+- 10 (2020-01-29) [React Suspense for Data Fetching](10-suspense-for-data-fetching)
 - ...
