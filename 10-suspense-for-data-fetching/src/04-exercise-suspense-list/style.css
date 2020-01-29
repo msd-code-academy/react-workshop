@@ -1,0 +1,25 @@
+/* .nav-bar {
+
+}
+
+.main-content {
+
+}
+
+.left-nav {
+
+}
+
+.right-nav {
+
+} */
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: row;
+}
