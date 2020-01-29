@@ -10,13 +10,13 @@ npm ci
 npm start
 ```
 
-Development server should open on the port 1234 _(unfortunately hot reload doesn't work with parcel and react experimental)_.
+We are using Parcel (https://parceljs.org/) for development server instead of webpack. It starts on port 1234. _(unfortunately hot reload sometimes doesn't work with parcel and react experimental, therefore is disabled)_.
 
 ## Introduction
 
 - React Suspense for Data Fetching is pretty experimental, so there are some rough edges that you're going to be working through.
 - The APIs can change in the future.
-- Only Facebook it is using in production with Relay.
+- Only Facebook is using it in production with Relay.
 - One of the things that I love about React in general, is that they're always applying the things that they're presenting to us internally at Facebook first, so they get some of the quirks worked out.
 - We're playing around with things, we're making little abstractions from things. Some of these things might be a bad idea, some of them might be good ideas. This is the whole point of this workshop, is to experiment with this, get familiar with the ideas and the concepts and the things that it enables, and then let you run off and play around with it, and give feedback back to the React team.
 
@@ -43,6 +43,11 @@ Start fetching all the required data for the next screen as early as possible, a
   3. Finish fetching
 
 ## Setup
+
+Install experimental React
+```
+npm install react@experimental
+```
 
 Use concurrent mode to enable experimental features.
 
@@ -84,7 +89,7 @@ Here’s what happens when we render `<Page>` on the screen:
 
 - React tries to render `<Page>`. It returns `<People>` as children.
 
-- React tries to render `<People>`. It calls `peopleResource.read()`. None of the data is fetched yet, so this component “suspends”. React skips over it, and tries rendering other components in the tree.
+- React tries to render `<People>`. It calls `peopleResource.read()`. That will throw a Promise, no further code in `<People>` is executed. None of the data is fetched yet, so this component “suspends”. React skips over it, and tries rendering other components in the tree.
 
 - There’s nothing left to try rendering. Because `<People>` suspended, React shows the closest `<Suspense>` fallback above it in the tree: "Loading people...". We’re done for now.
 
